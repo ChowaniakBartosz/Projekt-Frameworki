@@ -13,7 +13,6 @@ const Wrapper = styled.nav`
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    left: 2em;
 `;
 
 const MenuLogo = styled.img`

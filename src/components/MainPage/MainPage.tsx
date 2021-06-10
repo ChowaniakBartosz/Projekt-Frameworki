@@ -5,12 +5,13 @@ import TopBar from '../TopBar/TopBar';
 import LeftMenu from '../LeftMenu/LeftMenu';
 import Footer from '../Footer/Footer';
 
+import {Colors} from '../../styledHelpers/Colors';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #efefef;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: ${Colors.Background};
 `;
 
 const ContainerWrapper = styled.div`
