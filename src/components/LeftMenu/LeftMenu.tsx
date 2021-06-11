@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 import {Colors} from '../../styledHelpers/Colors';
 
@@ -10,6 +11,7 @@ import publicationIcon from '../../assets/icons/publications.svg'
 import ekosystemIcon from '../../assets/icons/ecosystem.svg'
 import entitiesIcon from '../../assets/icons/entities.svg'
 import IMenuItem from '../../interfaces/IMenuItem';
+import IMenuInterface from '../../interfaces/IMenuItem';
 
 
 const Wrapper = styled.div`
@@ -32,31 +34,52 @@ const MenuIcon = styled.img`
     color: ${Colors.PrimaryText};
 `;
 
-const MenuText = styled.p`
+const MenuText = styled(Link)`
     padding: 1em;
     padding-left: 0px;
     font-size: 1.2em;
     color: ${Colors.PrimaryText};
+    text-decoration: none;
 `;
 
-const Item: FC<IMenuItem> = (props) => {
+const Item: FC<IMenuItem> = ({text, to, icon, ...props}) => {
     return (
         <MenuItem>
-            <MenuIcon src={props.icon} />
-            <MenuText>{props.text}</MenuText>
+            <MenuIcon src={icon} />
+            <MenuText to={to}>{text}</MenuText>
         </MenuItem>
     );
 }
 
 const LeftMenu: FC = () => {
+    const menuItems : Array<IMenuItem> = [
+        {
+            text: 'Publications',
+            to: '/publications',
+            icon: publicationIcon,
+        },
+        {
+            text: 'Ecosystem',
+            to: '/ecosystem',
+            icon: ekosystemIcon,
+        },
+        {
+            text: 'Entities',
+            to: '/entities',
+            icon: entitiesIcon,
+        }
+    ];
+
     return (
         <Wrapper>
             <Profile />
 
             <Menu>
-                <Item icon={publicationIcon} text="Publications" />
-                <Item icon={ekosystemIcon} text="Ecosystem" />
-                <Item icon={entitiesIcon} text="Entities" />
+                {
+                    menuItems.map(item => (
+                        <Item to={item.to} icon={item.icon} text={item.text} />
+                    ))
+                }
             </Menu>
         </Wrapper>
     );
