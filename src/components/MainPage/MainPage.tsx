@@ -2,12 +2,22 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import {Colors} from '../../styledHelpers/Colors';
 
+// Routing
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+} from "react-router-dom";
+
 // Components
 import TopBar from '../TopBar/TopBar';
 import LeftMenu from '../LeftMenu/LeftMenu';
-import Publications from '../Publications/Publications';
-import Workspaces from '../Workspaces/Workspaces';
 import Footer from '../Footer/Footer';
+
+// Pages
+import PublicationsPage from '../PublicationsPage/PublicationsPage';
+import HomePage from '../HomePage/HomePage';
 
 
 const Wrapper = styled.div`
@@ -33,19 +43,27 @@ const Content = styled.main`
 
 const MainPage: FC = () => {
   return (
+    <Router>
       <Wrapper>
         <TopBar />
         <ContainerWrapper>
           <Container>
             <LeftMenu />
-            <Content>
-              <Publications />
-              <Workspaces />
-            </Content>
+            <Switch>
+              <Content>
+                <Route exact path="/publications">
+                  <PublicationsPage />
+                </Route>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+              </Content>
+            </Switch>
           </Container>
         </ContainerWrapper>
         {/* <Footer /> */}
       </Wrapper>
+    </Router>
     );
 }
 

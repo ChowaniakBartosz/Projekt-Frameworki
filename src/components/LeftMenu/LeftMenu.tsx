@@ -13,8 +13,7 @@ import IMenuItem from '../../interfaces/IMenuItem';
 
 
 const Wrapper = styled.div`
-    width: 25%;
-    min-width: 300px;
+    width: 300px;
 `;
 
 const Menu = styled.ul`
