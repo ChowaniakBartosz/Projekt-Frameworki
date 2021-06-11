@@ -1,18 +1,36 @@
 import React, { FC } from 'react'
+import useDropdown from 'react-dropdown-hook'
 import styled from 'styled-components'
+import {Colors} from '../../styledHelpers/Colors'
 
 // Assets
 import houseLogo from '../../assets/icons/house2.svg'
 import dropdownArrow from '../../assets/icons/arrow-down.svg'
+import logoutIcon from '../../assets/icons/logout.svg'
+import peopleLogo from '../../assets/icons/people.svg'
+import entitiesLogo from '../../assets/icons/entities.svg'
+import administrationLogo from '../../assets/icons/administration.svg'
+import clientContractLogo from '../../assets/icons/comments.svg'
+import corporateLogo from '../../assets/icons/comments.svg'
+import groupNormsLogo from '../../assets/icons/network.svg'
+import privacyIcon from '../../assets/icons/privacy.svg'
+import settingsIcon from '../../assets/icons/settings.svg'
+import avatarLogo from '../../assets/avatar.jpg'
+import publicationsLogo from '../../assets/icons/publications.svg'
 
-
-const Wrapper = styled.nav`
-    width: 15%;
+const MainWrapper = styled.nav`
+    display: flex;
+    flex-direction: column;
+    position: relative;
     height: 100%;
+    min-width: 200px;
+`;
+
+const Wrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: relative;
+    width: 100%;
 `;
 
 const MenuLogo = styled.img`
@@ -27,19 +45,173 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
 `;
 
-const DropdownArrow = styled.img`
+const DropdownButton = styled.button`
     justify-self: flex-end;
+    margin: 0;
+    padding: 6px 8px;
+    border: 0;
+    background-color: transparent;
 `;
 
-const Navigation: FC = () => {
+const Dropdown = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 46px;
+    background-color: ${Colors.White};
+    width: 100%;
+    border: ${Colors.Silver} solid 1px;
+    border-top: 0;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+`;
+
+const Filter = styled.input`
+    background-color: ${Colors.White};
+    border: ${Colors.Silver} solid 1px;
+    border-radius: 3px;
+    margin: .5em;
+    padding: 6px 3px;
+`;
+
+const Container = styled.div`
+    overflow: auto;
+    max-height: 300px;
+    padding: .5em;
+    padding-top: 0;
+`;
+
+const AccountSection = styled.div`
+    border-top: ${Colors.Silver} solid 1px;
+    border-bottom: ${Colors.Silver} solid 1px;
+    padding: .5em;
+`;
+
+const SectionTitle = styled.h3`
+    color: ${Colors.Gray};
+    font-size: .9em;
+    font-weight: bold;
+    padding: 3px 0px;
+`;
+
+const LogoutSection = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: .5em;
+`;
+
+const LogoutText = styled.div`
+    color: ${Colors.Gray};
+    margin-left: .4em;
+`;
+
+const Nav = styled.ul`
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+`;
+
+const NavItem = styled.li`
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    color: ${Colors.Gray};
+    padding: 3px 0px;
+    transition: all .3s;
+    &:hover { background-color: #cfcfcf; }
+`;
+
+const NavItemText = styled.p`
+    align-self: center;
+    padding: 6px 3px;
+`;
+
+const NavItemIcon = styled.img`
+    align-self: flex-start;
+    justify-self: center;
+    padding: .3em;
+    width: 25px;
+`;
+
+const SeeProfile = styled.a`
+    font-size: .8em;
+    color: ${Colors.SecondaryText};
+`;
+
+interface NavItemProps {
+    icon : string;
+    title? : string;    // optional
+}
+
+const NavElement : React.FC<NavItemProps> = (props) => {
     return (
-        <Wrapper>
-            <MenuLogo src={houseLogo} />
-            <Menu>
-                <MenuItem>Home</MenuItem>
-            </Menu>
-            <DropdownArrow src={dropdownArrow} />
-        </Wrapper>
+        <NavItem>
+            <NavItemIcon src={props.icon} alt={props.title} />
+            <NavItemText>{props.children == null ? props.title : props.children}</NavItemText>
+        </NavItem>
+    );
+}
+
+const Navigation: FC = (props) => {
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    return (
+        <MainWrapper>
+            <Wrapper ref={wrapperRef} onClick={toggleDropdown}>
+                <MenuLogo src={houseLogo} />
+                <Menu>
+                    <MenuItem>Home</MenuItem>
+                </Menu>
+                <DropdownButton>
+                    <img src={dropdownArrow} alt="Dropdown menu icon" />
+                </DropdownButton>
+            </Wrapper>
+
+            {dropdownOpen &&
+            <Dropdown>
+                <Filter type="text" placeholder="Filter..." />
+                <Container>
+                    {/* {props.children} */}
+                    <SectionTitle>Platform</SectionTitle>
+                    <Nav>
+                        <NavElement icon={houseLogo} title="Home" />
+                        <NavElement icon={publicationsLogo} title="Publications" />
+                        <NavElement icon={peopleLogo} title="People" />
+                        <NavElement icon={entitiesLogo} title="Entities" />
+                        <NavElement icon={administrationLogo} title="Administration" />
+                    </Nav>
+
+                    <SectionTitle>Workspaces</SectionTitle>
+                    <Nav>
+                        <NavElement icon={clientContractLogo} title="Client contracts" />
+                        <NavElement icon={clientContractLogo} title="Supplier contract" />
+                        <NavElement icon={corporateLogo} title="Corporate" />
+                        <NavElement icon={groupNormsLogo} title="Group norms" />
+                        <NavElement icon={clientContractLogo} title="Real estate contracts" />
+                    </Nav>
+                </Container>
+                <AccountSection>
+                    <SectionTitle>Account</SectionTitle>
+                    <Nav>
+                        <NavElement icon={avatarLogo} title="Bartosz Chowaniak">
+                            <p>Bartosz Chowaniak</p>
+                            <SeeProfile>See profile</SeeProfile>
+                        </NavElement>
+                        <NavElement icon={privacyIcon} title="Privacy" />
+                        <NavElement icon={settingsIcon} title="Settings" />
+                    </Nav>
+                </AccountSection>
+                <LogoutSection>
+                    <img src={logoutIcon} alt="Logout" />
+                    <LogoutText>Logout</LogoutText>
+                </LogoutSection>
+            </Dropdown>
+            }
+        </MainWrapper>
     );
 } 
 

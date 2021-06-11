@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import {Colors} from '../../styledHelpers/Colors';
 
+// Components
 import TopBar from '../TopBar/TopBar';
 import LeftMenu from '../LeftMenu/LeftMenu';
+import Publications from '../Publications/Publications';
+import Workspaces from '../Workspaces/Workspaces';
 import Footer from '../Footer/Footer';
 
-import {Colors} from '../../styledHelpers/Colors';
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,7 +27,8 @@ const Container = styled.div`
 `;
 
 const Content = styled.main`
-  flex-grow: 3;
+  flex-grow: 2;
+	margin: 0em 3em 1em 1em;
 `;
 
 const MainPage: FC = () => {
@@ -35,7 +39,8 @@ const MainPage: FC = () => {
           <Container>
             <LeftMenu />
             <Content>
-              <h1>Content</h1>
+              <Publications />
+              <Workspaces />
             </Content>
           </Container>
         </ContainerWrapper>

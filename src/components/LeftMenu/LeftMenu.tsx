@@ -14,6 +14,7 @@ import IMenuItem from '../../interfaces/IMenuItem';
 
 const Wrapper = styled.div`
     width: 25%;
+    min-width: 300px;
 `;
 
 const Menu = styled.ul`
@@ -55,7 +56,7 @@ const LeftMenu: FC = () => {
 
             <Menu>
                 <Item icon={publicationIcon} text="Publications" />
-                <Item icon={ekosystemIcon} text="Ekosystem" />
+                <Item icon={ekosystemIcon} text="Ecosystem" />
                 <Item icon={entitiesIcon} text="Entities" />
             </Menu>
         </Wrapper>

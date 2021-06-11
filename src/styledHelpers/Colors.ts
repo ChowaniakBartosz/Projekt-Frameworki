@@ -12,4 +12,5 @@ export const Colors = {
 
     // Profile name text color
     Title: '#5f6fb5',
+    SecondaryText: '#5f6fb5',
 } 
