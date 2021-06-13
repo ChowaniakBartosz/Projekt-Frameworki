@@ -1,23 +1,28 @@
 import React, { FC, ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom';
-import useDropdown from 'react-dropdown-hook'
 import styled from 'styled-components'
+import useDropdown from 'react-dropdown-hook'
+
+// Styled helpers
 import {Colors} from 'styledHelpers/Colors'
 
 // Assets
-import houseLogo from 'assets/icons/house2.svg'
-import dropdownArrow from 'assets/icons/arrow-down.svg'
-import logoutIcon from 'assets/icons/logout.svg'
-import peopleLogo from 'assets/icons/people.svg'
-import entitiesLogo from 'assets/icons/entities.svg'
-import administrationLogo from 'assets/icons/administration.svg'
-import clientContractLogo from 'assets/icons/comments.svg'
-import corporateLogo from 'assets/icons/comments.svg'
-import groupNormsLogo from 'assets/icons/network.svg'
+import dropdownArrowIcon from 'assets/icons/arrow-down.svg'
+// Platform
+import homeIcon from 'assets/icons/house2.svg'
+import publicationsIcon from 'assets/icons/publications.svg'
+import peopleIcon from 'assets/icons/people.svg'
+import entitiesIcon from 'assets/icons/entities.svg'
+import administrationIcon from 'assets/icons/administration.svg'
+// Workspaces
+import contractIcon from 'assets/icons/comments.svg'
+import corporateIcon from 'assets/icons/comments.svg'
+import groupNormsIcon from 'assets/icons/network.svg'
+// Account
+import profilePicture from 'assets/avatar.jpg'
 import privacyIcon from 'assets/icons/privacy.svg'
-import settingsIcon from 'assets/icons/settings.svg'
-import avatarLogo from 'assets/avatar.jpg'
-import publicationsLogo from 'assets/icons/publications.svg'
+import profileSettingsIcon from 'assets/icons/settings.svg'
+import logoutIcon from 'assets/icons/logout.svg'
 
 const MainWrapper = styled.nav`
     display: flex;
@@ -154,31 +159,31 @@ const SeeProfile = styled.a`
     color: ${Colors.SecondaryText};
 `;
 
-const platforms: Array<NavItemProps> = [
+const platform: Array<NavItemProps> = [
     {
         title: 'Home',
         to: '/',
-        icon: houseLogo,
+        icon: homeIcon,
     },
     {
         title: 'Publications',
         to: '/publications',
-        icon: publicationsLogo,
+        icon: publicationsIcon,
     },
     {
         title: 'People',
         to: '/people',
-        icon: peopleLogo,
+        icon: peopleIcon,
     },
     {
         title: 'Entities',
         to: '/entities',
-        icon: entitiesLogo,
+        icon: entitiesIcon,
     },
     {
         title: 'Administration',
         to: '/administration',
-        icon: administrationLogo,
+        icon: administrationIcon,
     }
 ];
 
@@ -186,27 +191,27 @@ const workspaces : Array<NavItemProps> = [
     {
         title: 'Client contract',
         to: '/clientContract',
-        icon: clientContractLogo,
+        icon: contractIcon,
     },
     {
         title: 'Supplier contract',
         to: '/supplierContract',
-        icon: clientContractLogo,
+        icon: contractIcon,
     },
     {
         title: 'Corporate',
         to: '/corporate',
-        icon: corporateLogo,
+        icon: corporateIcon,
     },
     {
         title: 'Group Norms',
         to: '/groupNorms',
-        icon: groupNormsLogo,
+        icon: groupNormsIcon,
     },
     {
         title: 'Real estate contracts',
         to: '/realestateContracts',
-        icon: clientContractLogo,
+        icon: contractIcon,
     }
 ];
 
@@ -219,7 +224,7 @@ const accounts : Array<NavItemProps> = [
     {
         title: 'Profile',
         to: '/profile',
-        icon: settingsIcon,
+        icon: profileSettingsIcon,
     }
 ]
 
@@ -252,12 +257,12 @@ const Navigation: FC = (props) => {
     return (
         <MainWrapper ref={wrapperRef} >
             <Wrapper onClick={toggleDropdown}>
-                <MenuLogo src={houseLogo} />
+                <MenuLogo src={homeIcon} />
                 <Menu>
                     <MenuItem>Home</MenuItem>
                 </Menu>
                 <DropdownButton>
-                    <img src={dropdownArrow} alt="Dropdown menu icon" />
+                    <img src={dropdownArrowIcon} alt="Dropdown menu icon" />
                 </DropdownButton>
             </Wrapper>
             {dropdownOpen &&
@@ -267,7 +272,7 @@ const Navigation: FC = (props) => {
                     <SectionTitle>Platform</SectionTitle>
                     <Nav>
                         {
-                            platforms.map((item) => (
+                            platform.map((item) => (
                                 item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
                                 <NavElement to={item.to} title={item.title} icon={item.icon} key={item.to} />
                             ))
@@ -287,7 +292,7 @@ const Navigation: FC = (props) => {
                 <AccountSection>
                     <SectionTitle>Account</SectionTitle>
                     <Nav>
-                        <NavElement to="/profile" icon={avatarLogo} title="Bartosz Chowaniak">
+                        <NavElement to="/profile" icon={profilePicture} title="Bartosz Chowaniak">
                             <p>Bartosz Chowaniak</p>
                             <SeeProfile>See profile</SeeProfile>
                         </NavElement>

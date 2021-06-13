@@ -14,13 +14,6 @@ import Card from 'components/MainContent/ResumeYourWork/Resume'
 import FilterIcon from 'assets/icons/search.png'
 import DropdownArrow from 'assets/icons/arrow-down.svg'
 
-
-const ResumesTitle = styled.div`
-    display: flex;
-    align-content: center;
-    position: relative;
-`;
-
 const FilterWrapper = styled.form`
     justify-self: flex-end;
     align-content: center;

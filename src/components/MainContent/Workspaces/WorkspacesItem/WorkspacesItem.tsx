@@ -16,7 +16,6 @@ const Wrapper = styled.div`
     box-shadow: 0px 3px 3px ${Colors.Silver};
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 `;
 
 const Image = styled.div`
@@ -57,23 +56,22 @@ const UpdateInformation = styled.p`
     color: ${Colors.Gray};
     margin: .6em;
 `;
-interface CardProps {
-    lastUpdate : string;
-    title : string;
-    icon : string;
+
+export interface IWorkspacesItemProps {
+    lastUpdate : string,
+    title : string,
+    icon : string
 }
 
-const WorkspaceCard : FC<CardProps> = (props) => {
+export const WorkspacesItem: FC<IWorkspacesItemProps> = ({title, icon, lastUpdate}) => {
     return (
         <Wrapper>
             <Image />
             <Content>
-                <CardIcon src={props.icon} alt="icon" />
-                <Title>{props.title}</Title>
+                <CardIcon src={icon} alt="icon" />
+                <Title>{title}</Title>
             </Content>
-            <UpdateInformation>Last update {props.lastUpdate} days ago</UpdateInformation>
+            <UpdateInformation>Last update {lastUpdate} days ago</UpdateInformation>
         </Wrapper>
     );
 } 
-
-export default WorkspaceCard;

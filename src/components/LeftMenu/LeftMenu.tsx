@@ -16,6 +16,7 @@ import IMenuInterface from 'interfaces/IMenuItem';
 
 const Wrapper = styled.div`
     width: 300px;
+    flex-shrink: 0;
 `;
 
 const Menu = styled.ul`

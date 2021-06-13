@@ -1,7 +1,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import {Colors} from 'styledHelpers/Colors'
-import WorkspaceCard from './WorkspaceCard/WorkspaceCard'
+import {WorkspacesItem, IWorkspacesItemProps} from './WorkspacesItem/WorkspacesItem'
+
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import "./swiper.css";
 
 // Assets
 import CardIcon from 'assets/icons/entities2.svg'
@@ -9,27 +15,60 @@ import CardIcon from 'assets/icons/entities2.svg'
 export const Title = styled.h2`
     color: ${Colors.PrimaryText};
     font-size: 1.4em;
-    margin: 1em;
+    padding: 0.5em 1em;
 `;
 
 const Container = styled.section`
     display: flex;
-    justify-content: space-around;
-    align-content: center;
+    flex-direction: column;
     width: 100%;
-    max-width: 70vw;
-    overflow-x: scroll;
+    position: relative;
+    overflow-x: hidden !important;
 `;
 
 export const Workspaces: FC = () => {
+    // to juz istnieje, mozna importowac z nawigacji
+    const workspaces: Array<IWorkspacesItemProps> = [
+        {
+            title: "Client contract",
+            icon: CardIcon,
+            lastUpdate: "1",
+        },
+        {
+            title: "Supplier contract",
+            icon: CardIcon,
+            lastUpdate: "2",
+        },
+        {
+            title: "Corporate",
+            icon: CardIcon,
+            lastUpdate: "3",
+        },
+        {
+            title: "Group Norms",
+            icon: CardIcon,
+            lastUpdate: "4",
+        },
+        {
+            title: "Real estate contracts",
+            icon: CardIcon,
+            lastUpdate: "5",
+        },
+    ];
+
     return (
         <>
-            <Title>Workspaces</Title>
             <Container>
-                <WorkspaceCard icon={CardIcon} title="Client contract" lastUpdate="1" />
-                <WorkspaceCard icon={CardIcon} title="Supplier contract" lastUpdate="2" />
-                <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="3" />
-                <WorkspaceCard icon={CardIcon} title="Group Norms" lastUpdate="4" />
+                <Title>Workspaces</Title>
+                <Swiper spaceBetween={5} slidesPerView={'auto'}>
+                    {
+                        workspaces.map(({icon, title, lastUpdate}) => (
+                            <SwiperSlide>
+                                <WorkspacesItem icon={icon} title={title} lastUpdate={lastUpdate} />
+                            </SwiperSlide>
+                        ))
+                    }
+                </Swiper>
             </Container>
         </>
     );

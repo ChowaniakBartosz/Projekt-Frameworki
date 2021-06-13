@@ -31,6 +31,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.main`
+flex-shrink: 1;
 `;
 
 const App: FC = () => {
