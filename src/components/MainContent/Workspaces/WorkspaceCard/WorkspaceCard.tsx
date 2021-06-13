@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {Colors} from '../../../styledHelpers/Colors'
+import {Colors} from '../../../../styledHelpers/Colors'
 
-import ContractImage from '../../../assets/contract.jpg'
-import Icon from '../../../assets/icons/ecosystem.svg';
+import ContractImage from '../../../../assets/contract.jpg'
+import Icon from '../../../../assets/icons/ecosystem.svg';
 
 
 const Wrapper = styled.div`

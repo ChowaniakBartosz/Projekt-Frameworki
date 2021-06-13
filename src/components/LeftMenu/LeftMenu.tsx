@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {Colors} from '../../styledHelpers/Colors';
 
 // Modules
-import Profile from '../Profile/Profile';
+import Profile from './Profile/Profile';
 
 // Assets
 import publicationIcon from '../../assets/icons/publications.svg'

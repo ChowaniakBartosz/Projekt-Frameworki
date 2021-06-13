@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Reset } from 'styled-reset';
 import {createGlobalStyle} from 'styled-components'
 
-import MainPage from './components/MainPage/MainPage';
+import App from './App';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,7 +15,7 @@ ReactDOM.render(
   <>
     <Reset />
     <GlobalStyle />
-    <MainPage />
+    <App />
   </>,
   document.getElementById('root')
 );

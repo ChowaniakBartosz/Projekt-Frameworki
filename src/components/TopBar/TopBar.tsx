@@ -12,8 +12,9 @@ import peopleIcon from '../../assets/icons/people.svg'
 import configIcon from '../../assets/icons/cog.svg'
 
 // Components
-import Navigation from '../Navigation/Navigation';
-import SearchBar from '../SearchBar/SearchBar';
+import Navigation from './Navigation/Navigation';
+import SearchBar from './SearchBar/SearchBar';
+import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -34,7 +35,7 @@ const Container = styled.div`
     padding-right: 2em;
 `;
 
-const TopBarsLeftSideWrapper = styled.div`
+const LeftSide = styled.div`
     display: flex;
     align-items: center;
     gap: 1em;
@@ -44,7 +45,7 @@ const BrandLogo = styled.img`
     max-width: 36px;
 `;
 
-const Menu = styled.div`
+const RightSide = styled.div`
     justify-self: flex-end;
     display: flex;
     justify-content: flex-end;
@@ -80,15 +81,17 @@ const TopBar: FC = () => {
 	return (
 		<Wrapper>
             <Container>
-                <TopBarsLeftSideWrapper>
-                    <BrandLogo src={logo}  alt="MyCompanyName" title="MyCompanyName" />
-                    <Navigation>
-                        
-                    </Navigation>
-                </TopBarsLeftSideWrapper>
+                <LeftSide>
+                    {/* Zrobić component logo */}
+                    <Link to="/">
+                        <BrandLogo src={logo}  alt="MyCompanyName" title="MyCompanyName" />
+                    </Link>
+                    <Navigation/>
+                </LeftSide>
                 <SearchBar />
 
-                <Menu>
+                {/* Zrobić osobny komponent Menu czy coś */}
+                <RightSide>
                     <MenuItem>
                         <img src={homeIcon} alt="Home icon" />
                     </MenuItem>
@@ -102,7 +105,7 @@ const TopBar: FC = () => {
                         <img src={bellIcon} alt="Bell icon" />
                         <Badge>3</Badge>
                     </MenuItem>
-                </Menu>
+                </RightSide>
             </Container>
 		</Wrapper>
 	);

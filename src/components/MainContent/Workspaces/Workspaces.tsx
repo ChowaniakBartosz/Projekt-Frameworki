@@ -1,11 +1,10 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {Colors} from '../../styledHelpers/Colors'
+import {Colors} from '../../../styledHelpers/Colors'
 import WorkspaceCard from './WorkspaceCard/WorkspaceCard'
 
 // Assets
-import CardIcon from '../../assets/icons/entities2.svg'
-
+import CardIcon from '../../../assets/icons/entities2.svg'
 
 export const Title = styled.h2`
     color: ${Colors.PrimaryText};
@@ -27,10 +26,10 @@ export const Workspaces: FC = () => {
         <>
             <Title>Workspaces</Title>
             <Container>
-                <WorkspaceCard icon={CardIcon} title="Client contract" lastUpdate="3" />
+                <WorkspaceCard icon={CardIcon} title="Client contract" lastUpdate="1" />
                 <WorkspaceCard icon={CardIcon} title="Supplier contract" lastUpdate="2" />
-                <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="4" />
-                <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="4" />
+                <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="3" />
+                <WorkspaceCard icon={CardIcon} title="Group Norms" lastUpdate="4" />
             </Container>
         </>
     );

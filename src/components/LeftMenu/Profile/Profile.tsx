@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Colors } from '../../styledHelpers/Colors';
+import { Colors } from '../../../styledHelpers/Colors';
 
 // Assets
-import avatar from '../../assets/avatar.jpg';
-import networkIcon from '../../assets/icons/network.svg';
-import publicationIcon from '../../assets/icons/publications.svg';
-import plusIcon from '../../assets/icons/plus.svg';
+import avatar from '../../../assets/avatar.jpg';
+import networkIcon from '../../../assets/icons/network.svg';
+import publicationIcon from '../../../assets/icons/publications.svg';
+import plusIcon from '../../../assets/icons/plus.svg';
 
-import IMenuItem from '../../interfaces/IMenuItem';
+import IMenuItem from '../../../interfaces/IMenuItem';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.section`
     background-color: ${Colors.White};
@@ -28,12 +29,17 @@ const Photo = styled.img`
     align-self: center;
 `;
 
-const Title = styled.h2`
+const Title = styled(Link)`
     font-size: 1.3em;
     color: ${Colors.SecondaryText};
     text-align: center;
     padding: .6em;
     font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+        color: ${Colors.PrimaryText};
+    }
 `;
 
 const Subtitle = styled.p`
@@ -98,7 +104,7 @@ const Profile: FC = () => {
         <Wrapper>
             <Container>
             <Photo src={avatar} alt="Profile picture" />
-            <Title>Bartosz Chowaniak</Title>
+            <Title to="/profile">Bartosz Chowaniak</Title>
             <Subtitle>Job title - Company</Subtitle>
             </Container>
 

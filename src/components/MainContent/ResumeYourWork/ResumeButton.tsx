@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {Colors} from '../styledHelpers/Colors'
+import {Colors} from '../../../styledHelpers/Colors'
 
 const Wrapper = styled.div`
     margin: .3em;

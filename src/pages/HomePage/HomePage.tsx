@@ -1,16 +1,17 @@
-import React, { Component, FC, ChangeEvent } from 'react'
+import React, { Component, FC, ChangeEvent, MouseEvent } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate'
 
 // Components
-import Publications from '../Publications/Publications';
-import {Workspaces, Title} from '../Workspaces/Workspaces'
+import Publications from '../../components/MainContent/LatestPublications/LatestPublications';
+import {Workspaces, Title} from '../../components/MainContent/Workspaces/Workspaces'
 import {Colors} from '../../styledHelpers/Colors'
+import {FlexWrapperRow} from '../../styledHelpers/Components'
 
 import FilterIcon from '../../assets/icons/search.png'
 import DropdownArrow from '../../assets/icons/arrow-down.svg'
-import Card from '../Resume'
+import Card from '../../components/MainContent/ResumeYourWork/Resume'
 
 
 const ResumesTitle = styled.div`
@@ -109,7 +110,7 @@ class HomePage extends Component<IHomePageProps, IPosts> {
             })
     }
 
-    filterButtonHandle(e : React.MouseEvent<HTMLButtonElement>) : void {
+    filterButtonHandle(e: MouseEvent<HTMLButtonElement>) : void {
         e.preventDefault();
 
         const input : HTMLInputElement | null = document.querySelector('input[type="text"]');
@@ -126,7 +127,7 @@ class HomePage extends Component<IHomePageProps, IPosts> {
                 <Publications />
                 <Workspaces />
 
-                <ResumesTitle>
+                <FlexWrapperRow>
                     <Title>Resume your work</Title>
                     <RightContainer>
                         <FilterWrapper>
@@ -136,11 +137,11 @@ class HomePage extends Component<IHomePageProps, IPosts> {
                             </FilterButton>
                         </FilterWrapper>
                         <FollowedButton>
-                            <span>Followed</span>
+                            <span>All items</span>
                             <img src={DropdownArrow} alt="Dropdown" />
                         </FollowedButton>
                     </RightContainer>
-                </ResumesTitle>
+                </FlexWrapperRow>
 
                 <Container>
                     {

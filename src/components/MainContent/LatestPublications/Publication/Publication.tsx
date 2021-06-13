@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 // Assets
-import CityImage from '../../../assets/office.jpg'
-import {Colors} from '../../../styledHelpers/Colors'
+import CityImage from '../../../../assets/office.jpg'
+import {Colors} from '../../../../styledHelpers/Colors'
 
 
 const Wrapper = styled.div`
@@ -30,7 +30,7 @@ const InformationContainer = styled.div`
     font-size: .8em;
 `;
 
-const PublicationItem: FC = () => {
+const Publication: FC = () => {
     return (
         <Wrapper>
             <Image src={CityImage} alt="City image" />
@@ -44,4 +44,4 @@ const PublicationItem: FC = () => {
     );
 } 
 
-export default PublicationItem;
+export default Publication;

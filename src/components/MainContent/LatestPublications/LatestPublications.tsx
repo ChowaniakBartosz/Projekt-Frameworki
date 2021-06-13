@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import React, { FC } from 'react';
 
 // Components
-import PublicationItem from './PublicationItem/PublicationItem';
+import Publication from './Publication/Publication';
 
 // Assets
-import {Colors} from '../../styledHelpers/Colors';
-import CityImage from '../../assets/city.jpg';
+import {Colors} from '../../../styledHelpers/Colors';
+import CityImage from '../../../assets/city.jpg';
 
 const Wrapper = styled.section`
     background-color: ${Colors.White};
@@ -65,7 +65,7 @@ const MorePublication = styled.a`
     color: ${Colors.SecondaryText};
 `;
 
-const Publications: FC = () => {
+const LatestPublications: FC = () => {
     return (
         <Wrapper>
             <BrandImage>
@@ -75,9 +75,9 @@ const Publications: FC = () => {
             <Content>
                 <Title>Latest publications</Title>
                 <Container>
-                    <PublicationItem />
-                    <PublicationItem />
-                    <PublicationItem />
+                    <Publication />
+                    <Publication />
+                    <Publication />
                 </Container>
                 <MorePublication>See more publications</MorePublication>
             </Content>
@@ -85,4 +85,4 @@ const Publications: FC = () => {
     );
 } 
 
-export default Publications;
+export default LatestPublications;

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-    width: 128px;
+    width: 100px;
     border-radius: 50%;
 `;
 
@@ -45,7 +45,6 @@ const ProfileView: FC = () => {
         <Wrapper>
             <ImageWrapper>
                 <Image src={face} alt="Face" />
-                <Badge />
             </ImageWrapper>
             <ProfileButton to="/profile">See profile</ProfileButton>
         </Wrapper>

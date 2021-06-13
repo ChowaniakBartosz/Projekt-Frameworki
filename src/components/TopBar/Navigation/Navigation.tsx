@@ -2,22 +2,22 @@ import React, { FC, ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useDropdown from 'react-dropdown-hook'
 import styled from 'styled-components'
-import {Colors} from '../../styledHelpers/Colors'
+import {Colors} from '../../../styledHelpers/Colors'
 
 // Assets
-import houseLogo from '../../assets/icons/house2.svg'
-import dropdownArrow from '../../assets/icons/arrow-down.svg'
-import logoutIcon from '../../assets/icons/logout.svg'
-import peopleLogo from '../../assets/icons/people.svg'
-import entitiesLogo from '../../assets/icons/entities.svg'
-import administrationLogo from '../../assets/icons/administration.svg'
-import clientContractLogo from '../../assets/icons/comments.svg'
-import corporateLogo from '../../assets/icons/comments.svg'
-import groupNormsLogo from '../../assets/icons/network.svg'
-import privacyIcon from '../../assets/icons/privacy.svg'
-import settingsIcon from '../../assets/icons/settings.svg'
-import avatarLogo from '../../assets/avatar.jpg'
-import publicationsLogo from '../../assets/icons/publications.svg'
+import houseLogo from '../../../assets/icons/house2.svg'
+import dropdownArrow from '../../../assets/icons/arrow-down.svg'
+import logoutIcon from '../../../assets/icons/logout.svg'
+import peopleLogo from '../../../assets/icons/people.svg'
+import entitiesLogo from '../../../assets/icons/entities.svg'
+import administrationLogo from '../../../assets/icons/administration.svg'
+import clientContractLogo from '../../../assets/icons/comments.svg'
+import corporateLogo from '../../../assets/icons/comments.svg'
+import groupNormsLogo from '../../../assets/icons/network.svg'
+import privacyIcon from '../../../assets/icons/privacy.svg'
+import settingsIcon from '../../../assets/icons/settings.svg'
+import avatarLogo from '../../../assets/avatar.jpg'
+import publicationsLogo from '../../../assets/icons/publications.svg'
 
 const MainWrapper = styled.nav`
     display: flex;
@@ -184,13 +184,13 @@ const platforms: Array<NavItemProps> = [
 
 const workspaces : Array<NavItemProps> = [
     {
-        title: 'Client contracts',
-        to: '/clientContracts',
+        title: 'Client contract',
+        to: '/clientContract',
         icon: clientContractLogo,
     },
     {
         title: 'Supplier contract',
-        to: '/supplierContracts',
+        to: '/supplierContract',
         icon: clientContractLogo,
     },
     {
@@ -199,7 +199,7 @@ const workspaces : Array<NavItemProps> = [
         icon: corporateLogo,
     },
     {
-        title: 'Group norms',
+        title: 'Group Norms',
         to: '/groupNorms',
         icon: groupNormsLogo,
     },

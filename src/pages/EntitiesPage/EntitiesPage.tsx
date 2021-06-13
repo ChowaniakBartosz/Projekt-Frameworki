@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Assets
 import settingsIcon from '../../assets/icons/settings.svg'
 import dropdownArrow from '../../assets/icons/arrow-down.svg'
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from '../../components/TopBar/SearchBar/SearchBar'
 
 
 const Wrapper = styled.div`

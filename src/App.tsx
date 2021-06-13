@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import {Colors} from '../../styledHelpers/Colors';
+import {Colors} from './styledHelpers/Colors';
 
 // Routing
 import {
@@ -11,15 +11,15 @@ import {
 } from "react-router-dom";
 
 // Components
-import TopBar from '../TopBar/TopBar';
-import LeftMenu from '../LeftMenu/LeftMenu';
-import Footer from '../Footer/Footer';
+import TopBar from './components/TopBar/TopBar';
+import LeftMenu from './components/LeftMenu/LeftMenu';
+import Footer from './components/Footer/Footer';
 
 // Pages
-import PublicationsPage from '../PublicationsPage/PublicationsPage';
-import HomePage from '../HomePage/HomePage';
-import MockPage from '../MockPage/MockPage';
-import ProfilePage from '../ProfilePage/ProfilePage';
+import PublicationsPage from './pages/PublicationsPage/PublicationsPage';
+import HomePage from './pages/HomePage/HomePage';
+import MockPage from './pages/MockPage/MockPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 
 const Wrapper = styled.div`
@@ -40,10 +40,10 @@ const Container = styled.div`
 
 const Content = styled.main`
   flex-grow: 2;
-	margin: 0em 3em 1em 1em;
+	margin: 0em 1em 1em 1em;
 `;
 
-const MainPage: FC = () => {
+const App: FC = () => {
   return (
     <Router>
       <Wrapper>
@@ -65,10 +65,10 @@ const MainPage: FC = () => {
                 <Route exact path="/corporate">
                   <MockPage />
                 </Route>
-                <Route exact path="/supplierContracts">
+                <Route exact path="/supplierContract">
                   <MockPage />
                 </Route>
-                <Route exact path="/clientContracts">
+                <Route exact path="/clientContract">
                   <MockPage />
                 </Route>
                 <Route exact path="/administration">
@@ -99,4 +99,4 @@ const MainPage: FC = () => {
     );
 }
 
-export default MainPage;
+export default App;
