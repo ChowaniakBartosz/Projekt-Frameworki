@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import face from '../../assets/avatar.jpg'
+import face from 'assets/avatar.jpg'
 
 
 const Wrapper = styled.div`

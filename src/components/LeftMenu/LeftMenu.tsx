@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import {Link} from 'react-router-dom'
 import styled from 'styled-components';
-import {Colors} from '../../styledHelpers/Colors';
+import {Colors} from 'styledHelpers/Colors';
 
 // Modules
 import Profile from './Profile/Profile';
 
 // Assets
-import publicationIcon from '../../assets/icons/publications.svg'
-import ekosystemIcon from '../../assets/icons/ecosystem.svg'
-import entitiesIcon from '../../assets/icons/entities.svg'
-import IMenuItem from '../../interfaces/IMenuItem';
-import IMenuInterface from '../../interfaces/IMenuItem';
+import publicationIcon from 'assets/icons/publications.svg'
+import ekosystemIcon from 'assets/icons/ecosystem.svg'
+import entitiesIcon from 'assets/icons/entities.svg'
+import IMenuItem from 'interfaces/IMenuItem';
+import IMenuInterface from 'interfaces/IMenuItem';
 
 
 const Wrapper = styled.div`

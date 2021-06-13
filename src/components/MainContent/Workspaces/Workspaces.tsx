@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {Colors} from '../../../styledHelpers/Colors'
+import {Colors} from 'styledHelpers/Colors'
 import WorkspaceCard from './WorkspaceCard/WorkspaceCard'
 
 // Assets
-import CardIcon from '../../../assets/icons/entities2.svg'
+import CardIcon from 'assets/icons/entities2.svg'
 
 export const Title = styled.h2`
     color: ${Colors.PrimaryText};

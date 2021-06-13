@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {Colors} from '../../../styledHelpers/Colors';
+import {Colors} from 'styledHelpers/Colors';
 
 // Assets
-import searchLogo from '../../../assets/icons/search.svg';
+import searchLogo from 'assets/icons/search.svg';
 
 const Wrapper = styled.form`
     display: flex;

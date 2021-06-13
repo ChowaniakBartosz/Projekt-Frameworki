@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import {Colors} from './styledHelpers/Colors';
+import {Colors} from 'styledHelpers/Colors';
 
 // Routing
 import {
@@ -11,15 +11,15 @@ import {
 } from "react-router-dom";
 
 // Components
-import TopBar from './components/TopBar/TopBar';
-import LeftMenu from './components/LeftMenu/LeftMenu';
-import Footer from './components/Footer/Footer';
+import TopBar from 'components/TopBar/TopBar';
+import LeftMenu from 'components/LeftMenu/LeftMenu';
+import Footer from 'components/Footer/Footer';
 
 // Pages
-import PublicationsPage from './pages/PublicationsPage/PublicationsPage';
-import HomePage from './pages/HomePage/HomePage';
-import MockPage from './pages/MockPage/MockPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+import PublicationsPage from 'pages/PublicationsPage/PublicationsPage';
+import HomePage from 'pages/HomePage/HomePage';
+import MockPage from 'pages/MockPage/MockPage';
+import ProfilePage from 'pages/ProfilePage/ProfilePage';
 
 
 const Wrapper = styled.div`

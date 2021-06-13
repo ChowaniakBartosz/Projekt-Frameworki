@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 // Assets
-import CityImage from '../../../../assets/office.jpg'
-import {Colors} from '../../../../styledHelpers/Colors'
+import CityImage from 'assets/office.jpg'
+import {Colors} from 'styledHelpers/Colors'
 
 
 const Wrapper = styled.div`

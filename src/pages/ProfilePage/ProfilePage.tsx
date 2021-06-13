@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import HeaderButton from './HeaderButton'
 import ProfileView from './ProfileView'
-import {Colors} from '../../styledHelpers/Colors'
+import {Colors} from 'styledHelpers/Colors'
 
 // import icons
-import messageIcon from '../../assets/icons/house.svg'
-import commentsIcon from '../../assets/icons/comments.svg'
-import editIcon from '../../assets/icons/plus.svg'
+import messageIcon from 'assets/icons/house.svg'
+import commentsIcon from 'assets/icons/comments.svg'
+import editIcon from 'assets/icons/plus.svg'
 
 
 const Wrapper = styled.div`

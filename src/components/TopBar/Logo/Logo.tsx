@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components';
 
-function Logo() {
+// Assets
+import logo from 'assets/logo.png';
+
+const Image = styled.img`
+    max-width: 36px;
+`;
+
+const Logo: FC = () => {
     return (
-        <div>
-            
-        </div>
+        <Link to="/">
+            <Image src={logo}  alt="Company's logo" title="MyCompanyName" />
+        </Link>
     )
 }
 

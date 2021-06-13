@@ -1,20 +1,21 @@
 import React, {FC} from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {Colors} from '../../styledHelpers/Colors';
+import {Colors} from 'styledHelpers/Colors';
 
 // Assets
-import logo from '../../assets/logo.png';
-import bellIcon from '../../assets/icons/bell.svg';
-import homeIcon from '../../assets/icons/house.svg';
-import commentsIcon from '../../assets/icons/comments.svg';
-import privacyIcon from '../../assets/icons/privacy.svg'
-import peopleIcon from '../../assets/icons/people.svg'
-import configIcon from '../../assets/icons/cog.svg'
+import logo from 'assets/logo.png';
+import bellIcon from 'assets/icons/bell.svg';
+import homeIcon from 'assets/icons/house.svg';
+import commentsIcon from 'assets/icons/comments.svg';
+import privacyIcon from 'assets/icons/privacy.svg'
+import peopleIcon from 'assets/icons/people.svg'
+import configIcon from 'assets/icons/cog.svg'
 
 // Components
+import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import SearchBar from './SearchBar/SearchBar';
-import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -41,15 +42,10 @@ const LeftSide = styled.div`
     gap: 1em;
 `;
 
-const BrandLogo = styled.img`
-    max-width: 36px;
-`;
-
 const RightSide = styled.div`
-    justify-self: flex-end;
     display: flex;
     justify-content: flex-end;
-    align-content: center;
+    align-items: center;
 `;
 
 const MenuItem = styled.div`
@@ -82,10 +78,7 @@ const TopBar: FC = () => {
 		<Wrapper>
             <Container>
                 <LeftSide>
-                    {/* Zrobić component logo */}
-                    <Link to="/">
-                        <BrandLogo src={logo}  alt="MyCompanyName" title="MyCompanyName" />
-                    </Link>
+                    <Logo />
                     <Navigation/>
                 </LeftSide>
                 <SearchBar />

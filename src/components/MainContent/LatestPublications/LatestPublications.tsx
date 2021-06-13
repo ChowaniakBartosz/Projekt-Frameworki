@@ -5,8 +5,8 @@ import React, { FC } from 'react';
 import Publication from './Publication/Publication';
 
 // Assets
-import {Colors} from '../../../styledHelpers/Colors';
-import CityImage from '../../../assets/city.jpg';
+import {Colors} from 'styledHelpers/Colors';
+import CityImage from 'assets/city.jpg';
 
 const Wrapper = styled.section`
     background-color: ${Colors.White};

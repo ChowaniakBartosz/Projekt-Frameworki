@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colors } from '../../../styledHelpers/Colors';
+import { Colors } from 'styledHelpers/Colors';
 
 // Assets
-import avatar from '../../../assets/avatar.jpg';
-import networkIcon from '../../../assets/icons/network.svg';
-import publicationIcon from '../../../assets/icons/publications.svg';
-import plusIcon from '../../../assets/icons/plus.svg';
+import avatar from 'assets/avatar.jpg';
+import networkIcon from 'assets/icons/network.svg';
+import publicationIcon from 'assets/icons/publications.svg';
+import plusIcon from 'assets/icons/plus.svg';
 
-import IMenuItem from '../../../interfaces/IMenuItem';
-import { Link } from 'react-router-dom';
+import IMenuItem from 'interfaces/IMenuItem';
 
 const Wrapper = styled.section`
     background-color: ${Colors.White};

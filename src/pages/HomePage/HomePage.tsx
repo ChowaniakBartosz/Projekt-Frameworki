@@ -4,14 +4,14 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate'
 
 // Components
-import Publications from '../../components/MainContent/LatestPublications/LatestPublications';
-import {Workspaces, Title} from '../../components/MainContent/Workspaces/Workspaces'
-import {Colors} from '../../styledHelpers/Colors'
-import {FlexWrapperRow} from '../../styledHelpers/Components'
+import Publications from 'components/MainContent/LatestPublications/LatestPublications';
+import {Workspaces, Title} from 'components/MainContent/Workspaces/Workspaces'
+import {Colors} from 'styledHelpers/Colors'
+import {FlexWrapperRow} from 'styledHelpers/Components'
 
-import FilterIcon from '../../assets/icons/search.png'
-import DropdownArrow from '../../assets/icons/arrow-down.svg'
-import Card from '../../components/MainContent/ResumeYourWork/Resume'
+import FilterIcon from 'assets/icons/search.png'
+import DropdownArrow from 'assets/icons/arrow-down.svg'
+import Card from 'components/MainContent/ResumeYourWork/Resume'
 
 
 const ResumesTitle = styled.div`
