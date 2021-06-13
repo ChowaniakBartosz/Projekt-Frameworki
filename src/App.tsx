@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
+import {BrowserRouter as Router, Switch,	Route, Link} from "react-router-dom"; // Routing
 import styled from 'styled-components';
-import {Colors} from 'styledHelpers/Colors';
 
-// Routing
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link
-} from "react-router-dom";
+// Styled Helpers
+import {Colors} from 'styledHelpers/Colors';
+import {FlexColumn, FlexRow} from 'styledHelpers/Components';
 
 // Components
 import TopBar from 'components/TopBar/TopBar';
@@ -16,11 +12,10 @@ import LeftMenu from 'components/LeftMenu/LeftMenu';
 import Footer from 'components/Footer/Footer';
 
 // Pages
-import PublicationsPage from 'pages/PublicationsPage/PublicationsPage';
 import HomePage from 'pages/HomePage/HomePage';
-import MockPage from 'pages/MockPage/MockPage';
 import ProfilePage from 'pages/ProfilePage/ProfilePage';
-
+import PublicationsPage from 'pages/PublicationsPage/PublicationsPage';
+import MockPage from 'pages/MockPage/MockPage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,26 +24,21 @@ const Wrapper = styled.div`
   background-color: ${Colors.Background};
 `;
 
-const ContainerWrapper = styled.div`
-  flex: 1 0 auto;
-`;
-
 const Container = styled.div`
-  padding: 1.5em 2em;
+  padding: 2em;
   display: flex;
+  gap: 1em;
 `;
 
 const Content = styled.main`
-  flex-grow: 2;
-	margin: 0em 1em 1em 1em;
 `;
 
 const App: FC = () => {
   return (
     <Router>
       <Wrapper>
-        <TopBar />
-        <ContainerWrapper>
+        <FlexColumn>
+          <TopBar />
           <Container>
             <LeftMenu />
             <Switch>
@@ -92,8 +82,8 @@ const App: FC = () => {
               </Content>
             </Switch>
           </Container>
-        </ContainerWrapper>
-        {/* <Footer /> */}
+          {/* <Footer /> */}
+        </FlexColumn>
       </Wrapper>
     </Router>
     );

@@ -2,16 +2,17 @@ import React, { Component, FC, ChangeEvent, MouseEvent } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate'
+import {Colors} from 'styledHelpers/Colors'
+import {FlexRow} from 'styledHelpers/Components'
 
 // Components
 import Publications from 'components/MainContent/LatestPublications/LatestPublications';
 import {Workspaces, Title} from 'components/MainContent/Workspaces/Workspaces'
-import {Colors} from 'styledHelpers/Colors'
-import {FlexWrapperRow} from 'styledHelpers/Components'
+import Card from 'components/MainContent/ResumeYourWork/Resume'
 
+// Assets
 import FilterIcon from 'assets/icons/search.png'
 import DropdownArrow from 'assets/icons/arrow-down.svg'
-import Card from 'components/MainContent/ResumeYourWork/Resume'
 
 
 const ResumesTitle = styled.div`
@@ -127,7 +128,7 @@ class HomePage extends Component<IHomePageProps, IPosts> {
                 <Publications />
                 <Workspaces />
 
-                <FlexWrapperRow>
+                <FlexRow>
                     <Title>Resume your work</Title>
                     <RightContainer>
                         <FilterWrapper>
@@ -141,7 +142,7 @@ class HomePage extends Component<IHomePageProps, IPosts> {
                             <img src={DropdownArrow} alt="Dropdown" />
                         </FollowedButton>
                     </RightContainer>
-                </FlexWrapperRow>
+                </FlexRow>
 
                 <Container>
                     {

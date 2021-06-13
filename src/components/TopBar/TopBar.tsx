@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+// Styled Helpers
 import {Colors} from 'styledHelpers/Colors';
+import {Center, FlexColumn, FlexRow} from 'styledHelpers/Components';
 
 // Assets
 import logo from 'assets/logo.png';
-import bellIcon from 'assets/icons/bell.svg';
-import homeIcon from 'assets/icons/house.svg';
-import commentsIcon from 'assets/icons/comments.svg';
 import privacyIcon from 'assets/icons/privacy.svg'
 import peopleIcon from 'assets/icons/people.svg'
 import configIcon from 'assets/icons/cog.svg'
@@ -16,90 +16,50 @@ import configIcon from 'assets/icons/cog.svg'
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import SearchBar from './SearchBar/SearchBar';
-
+import Menu from './Menu/Menu';
 
 const Wrapper = styled.div`
     background-color: ${Colors.White};
-    width: 100%;
-    box-shadow: 0px 3px 24px ${Colors.Silver};
-	z-index: 999;
-    position: relative;
+    box-shadow: 0px 0px 15px -5px ${Colors.Silver};
+    z-index: 999;
 `;
 
 const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    padding: .3em 2em;
     gap: 1em;
-    padding: .3em;
-    padding-left: 2em;
-    padding-right: 2em;
 `;
 
-const LeftSide = styled.div`
+const LeftWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
 `;
 
-const RightSide = styled.div`
+const RightWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
 `;
 
-const MenuItem = styled.div`
-    background-color: ${Colors.PrimaryBackground};
-    min-width: 26px;
-    min-height: 26px;
-    margin: .2em;
-    padding: .6em;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-`;
-
-const Badge = styled.p`
-    background-color: ${Colors.BadgeBackground};
-    color: ${Colors.White};
-    text-align: center;
-    font-size: 10px;
-    border-radius: 12px;
-    padding: 3px 8px;
-    position: absolute;
-    top: 0;
-    right: -6px;
-`;
-
 const TopBar: FC = () => {
 	return (
 		<Wrapper>
-            <Container>
-                <LeftSide>
-                    <Logo />
-                    <Navigation/>
-                </LeftSide>
-                <SearchBar />
-
-                {/* Zrobić osobny komponent Menu czy coś */}
-                <RightSide>
-                    <MenuItem>
-                        <img src={homeIcon} alt="Home icon" />
-                    </MenuItem>
-
-                    <MenuItem>
-                        <img src={commentsIcon} alt="Comments icon" />
-                        <Badge>3</Badge>
-                    </MenuItem>
-
-                    <MenuItem>
-                        <img src={bellIcon} alt="Bell icon" />
-                        <Badge>3</Badge>
-                    </MenuItem>
-                </RightSide>
-            </Container>
+            <FlexRow>
+                <Container>
+                    <LeftWrapper>
+                        <Logo />
+                        <Navigation/>
+                    </LeftWrapper>
+                    <SearchBar />
+                    <RightWrapper>
+                        <Menu />
+                    </RightWrapper>
+                </Container>
+            </FlexRow>
 		</Wrapper>
 	);
 } 
