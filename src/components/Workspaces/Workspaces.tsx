@@ -7,7 +7,7 @@ import WorkspaceCard from './WorkspaceCard/WorkspaceCard'
 import CardIcon from '../../assets/icons/entities2.svg'
 
 
-const Title = styled.h2`
+export const Title = styled.h2`
     color: ${Colors.PrimaryText};
     font-size: 1.4em;
     margin: 1em;
@@ -18,10 +18,11 @@ const Container = styled.section`
     justify-content: space-around;
     align-content: center;
     width: 100%;
-    max-width: 100%;
+    max-width: 70vw;
+    overflow-x: scroll;
 `;
 
-const Workspaces : React.FC = () => {
+export const Workspaces: FC = () => {
     return (
         <>
             <Title>Workspaces</Title>
@@ -29,9 +30,8 @@ const Workspaces : React.FC = () => {
                 <WorkspaceCard icon={CardIcon} title="Client contract" lastUpdate="3" />
                 <WorkspaceCard icon={CardIcon} title="Supplier contract" lastUpdate="2" />
                 <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="4" />
+                <WorkspaceCard icon={CardIcon} title="Corporate" lastUpdate="4" />
             </Container>
         </>
     );
 } 
-
-export default Workspaces;

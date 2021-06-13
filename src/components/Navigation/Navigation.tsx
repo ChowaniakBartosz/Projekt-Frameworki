@@ -32,6 +32,10 @@ const Wrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const MenuLogo = styled.img`
@@ -44,6 +48,12 @@ const Menu = styled.ul`
 `;
 
 const MenuItem = styled.li`
+    // Disabling selecting text in navigation
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
 `;
 
 const DropdownButton = styled.button`
@@ -144,6 +154,75 @@ const SeeProfile = styled.a`
     color: ${Colors.SecondaryText};
 `;
 
+const platforms: Array<NavItemProps> = [
+    {
+        title: 'Home',
+        to: '/',
+        icon: houseLogo,
+    },
+    {
+        title: 'Publications',
+        to: '/publications',
+        icon: publicationsLogo,
+    },
+    {
+        title: 'People',
+        to: '/people',
+        icon: peopleLogo,
+    },
+    {
+        title: 'Entities',
+        to: '/entities',
+        icon: entitiesLogo,
+    },
+    {
+        title: 'Administration',
+        to: '/administration',
+        icon: administrationLogo,
+    }
+];
+
+const workspaces : Array<NavItemProps> = [
+    {
+        title: 'Client contracts',
+        to: '/clientContracts',
+        icon: clientContractLogo,
+    },
+    {
+        title: 'Supplier contract',
+        to: '/supplierContracts',
+        icon: clientContractLogo,
+    },
+    {
+        title: 'Corporate',
+        to: '/corporate',
+        icon: corporateLogo,
+    },
+    {
+        title: 'Group norms',
+        to: '/groupNorms',
+        icon: groupNormsLogo,
+    },
+    {
+        title: 'Real estate contracts',
+        to: '/realestateContracts',
+        icon: clientContractLogo,
+    }
+];
+
+const accounts : Array<NavItemProps> = [
+    {
+        title: 'Privacy',
+        to: '/privacy',
+        icon: privacyIcon,
+    },
+    {
+        title: 'Profile',
+        to: '/profile',
+        icon: settingsIcon,
+    }
+]
+
 interface NavItemProps {
     title: string,
     to: string,
@@ -169,76 +248,7 @@ const Navigation: FC = (props) => {
         const text = e.target.value;
         setFilterText(text);
     }
-
-    const platforms: Array<NavItemProps> = [
-        {
-            title: 'Home',
-            to: '/',
-            icon: houseLogo,
-        },
-        {
-            title: 'Publications',
-            to: '/publications',
-            icon: publicationsLogo,
-        },
-        {
-            title: 'People',
-            to: '/people',
-            icon: peopleLogo,
-        },
-        {
-            title: 'Entities',
-            to: '/entities',
-            icon: entitiesLogo,
-        },
-        {
-            title: 'Administration',
-            to: '/administration',
-            icon: administrationLogo,
-        }
-    ];
-
-    const workspaces : Array<NavItemProps> = [
-        {
-            title: 'Client contracts',
-            to: '/clientContracts',
-            icon: clientContractLogo,
-        },
-        {
-            title: 'Supplier contract',
-            to: '/supplierContracts',
-            icon: clientContractLogo,
-        },
-        {
-            title: 'Corporate',
-            to: '/corporate',
-            icon: corporateLogo,
-        },
-        {
-            title: 'Group norms',
-            to: '/groupNorms',
-            icon: groupNormsLogo,
-        },
-        {
-            title: 'Real estate contracts',
-            to: '/realContracts',
-            icon: clientContractLogo,
-        }
-    ];
-
-    const accounts : Array<NavItemProps> = [
-        {
-            title: 'Privacy',
-            to: '/privacy',
-            icon: privacyIcon,
-        },
-        {
-            title: 'Profile',
-            to: '/profile',
-            icon: settingsIcon,
-        }
-    ]
-
+    
     return (
         <MainWrapper ref={wrapperRef} >
             <Wrapper onClick={toggleDropdown}>
@@ -252,7 +262,7 @@ const Navigation: FC = (props) => {
             </Wrapper>
             {dropdownOpen &&
             <Dropdown>
-                <Filter type="text" placeholder="Filter..." value={filterText} onChange={inputHandler} />
+                <Filter type="text" placeholder="Filter..." value={filterText} onChange={inputHandler} autoFocus />
                 <Container>
                     <SectionTitle>Platform</SectionTitle>
                     <Nav>

@@ -18,6 +18,8 @@ import Footer from '../Footer/Footer';
 // Pages
 import PublicationsPage from '../PublicationsPage/PublicationsPage';
 import HomePage from '../HomePage/HomePage';
+import MockPage from '../MockPage/MockPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 
 const Wrapper = styled.div`
@@ -51,6 +53,36 @@ const MainPage: FC = () => {
             <LeftMenu />
             <Switch>
               <Content>
+                <Route exact path="/profile">
+                  <ProfilePage />
+                </Route>
+                <Route exact path="/realestateContracts">
+                  <MockPage />
+                </Route>
+                <Route exact path="/groupNorms">
+                  <MockPage />
+                </Route>
+                <Route exact path="/corporate">
+                  <MockPage />
+                </Route>
+                <Route exact path="/supplierContracts">
+                  <MockPage />
+                </Route>
+                <Route exact path="/clientContracts">
+                  <MockPage />
+                </Route>
+                <Route exact path="/administration">
+                  <MockPage />
+                </Route>
+                <Route exact path="/entities">
+                  <MockPage />
+                </Route>
+                <Route exact path="/people">
+                  <MockPage />
+                </Route>
+                <Route exact path="/ecosystem">
+                  <MockPage />
+                </Route>
                 <Route exact path="/publications">
                   <PublicationsPage />
                 </Route>

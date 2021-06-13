@@ -30,16 +30,20 @@ const MenuItem = styled.li`
 
 const MenuIcon = styled.img`
     padding: 1em;
-    width: 32px;
+    width: 24px;
     color: ${Colors.PrimaryText};
 `;
 
 const MenuText = styled(Link)`
     padding: 1em;
     padding-left: 0px;
-    font-size: 1.2em;
+    font-size: 1em;
     color: ${Colors.PrimaryText};
     text-decoration: none;
+
+    &:hover {
+        color: ${Colors.Silver};
+    }
 `;
 
 const Item: FC<IMenuItem> = ({text, to, icon, ...props}) => {

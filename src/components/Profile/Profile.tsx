@@ -28,8 +28,8 @@ const Photo = styled.img`
     align-self: center;
 `;
 
-const Title = styled.h3`
-    font-size: 1.4em;
+const Title = styled.h2`
+    font-size: 1.3em;
     color: ${Colors.SecondaryText};
     text-align: center;
     padding: .6em;
@@ -39,7 +39,7 @@ const Title = styled.h3`
 const Subtitle = styled.p`
     text-align: center;
     color: gray;
-    font-size: 1em;
+    font-size: 0.8em;
 `;
 
 const Menu = styled.ul`
@@ -56,14 +56,14 @@ const MenuItem = styled.li`
 `;
 
 const MenuIcon = styled.img`
-    width: 26px;
+    width: 24px;
     align-self: flex-start;
     flex-grow: 0;
 `;
 
 const MenuText = styled.p`
     flex-grow: 1;
-    font-size: 1.2em;
+    font-size: 1em;
     padding-left: .5em;
     color: ${Colors.PrimaryText};
 `;
