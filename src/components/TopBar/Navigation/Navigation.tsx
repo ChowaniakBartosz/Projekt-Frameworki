@@ -31,26 +31,20 @@ const Button = styled.div`
 
 const ButtonIcon = styled.img`
     min-width: 32px;
+    user-select: none; // Disabling selecting in navigation
 `;
 
-const ButtonLabel = styled.p`
+const ButtonLabel = styled.span`
     flex-grow: 1;
-    // Disabling selecting text in navigation
-    user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Firefox */
-   -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; // Disabling selecting in navigation
 `;
 
-const DropdownArrow = styled.button`
+const DropdownArrow = styled.img`
     justify-self: flex-end;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
+    user-select: none; // Disabling selecting in navigation
 `;
 
-const Navigation: FC = (props) => {
+const Navigation: FC = () => {
     // Dropdown hook
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
@@ -61,9 +55,7 @@ const Navigation: FC = (props) => {
                 <ButtonLabel>
                     Home
                 </ButtonLabel>
-                <DropdownArrow>
-                    <img src={dropdownArrowIcon} alt="Dropdown menu icon" />
-                </DropdownArrow>
+                <DropdownArrow src={dropdownArrowIcon} alt="Dropdown menu icon" />
             </Button>
             {dropdownOpen &&
             <Dropdown/>

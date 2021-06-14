@@ -1,16 +1,20 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+// Styled helpers
 import { Colors } from "styledHelpers/Colors";
 
-const Item = styled(Link)`
+const Route = styled(Link)`
     display: flex;
     justify-content: flex-start;
-    align-content: center;
+    align-items: center;
     color: ${Colors.Gray};
-    padding: 3px 0.5em;
+    padding: 0.3em 0.5em;
     transition: all .3s;
     text-decoration: none;
+    gap: 0.5em;
+    min-height: 25px;
 
     &:hover {
         background-color: #cfcfcf;
@@ -18,31 +22,26 @@ const Item = styled(Link)`
 `;
 
 const Label = styled.span`
-    align-self: center;
-    padding: 6px 3px;
 `;
 
 const Icon = styled.img`
-    align-self: flex-start;
-    justify-self: center;
-    padding: .3em;
     width: 25px;
 `;
 
-export interface INavigationItemProps {
+export interface INavigationItem {
     title: string,
-    to: string,
+    path: string,
     icon: string,
 }
 
-export const NavigationItem: FC<INavigationItemProps> = ({icon, to, title, ...props}) => {
+export const NavigationItem: FC<INavigationItem> = ({icon, path, title, ...props}) => {
     return (
-        <Item to={to}>
+        <Route to={path}>
             <Icon src={icon} alt={title} />
             <Label>
                 {props.children == null ? title : props.children}
             </Label>
-        </Item>
+        </Route>
     );
 }
 

@@ -1,3 +1,4 @@
+import { FC, useState } from "react";
 import styled from "styled-components";
 
 // StyledHelpers
@@ -8,17 +9,17 @@ import NavigationSection from '../NavigationSection/NavigationSection';
 import NavigationFilter from '../NavigationFilter/NavigationFilter';
 
 // Navigation items
-import NavigationItems from '../NavigationItems/NavigationItems'
-import { useState } from "react";
+import navigationItems from '../navigationItems/navigationItems'
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: absolute;
-    top: 42px;
+    top: 2.5em;
     background-color: ${Colors.White};
-    width: 100%;
+    flex-basis: 100%;
+
+    // Border
     border: ${Colors.Silver} solid 1px;
     border-top: 0;
     border-radius: 6px;
@@ -29,12 +30,18 @@ const Wrapper = styled.div`
 const Dropdown = () => {
     // Filter state
     const [filterText, setFilterText] = useState<string>('');
+    
+    const handleFilterChange = (props: string) => {
+        setFilterText(props)
+    }
 
     return (
         <Wrapper>
-                <NavigationFilter value={filterText} setFilterText={setFilterText} />
-                {NavigationItems.map(({title, items}) => (
-                    <NavigationSection title={title} sectionItems={items} filterText={filterText}/>
+                <NavigationFilter value={filterText} onChangeFn={handleFilterChange} />
+
+                {/* List all sections */}
+                {navigationItems.map(({title, items}) => (
+                    <NavigationSection title={title} sectionItems={items} filterText={filterText}/> //>
                 ))}
         </Wrapper>
     )

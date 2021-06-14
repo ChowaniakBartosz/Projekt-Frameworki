@@ -20,38 +20,38 @@ interface INavigationItems {
     title?: string,
     items: {
         title: string,
-        to: string,
+        path: string,
         icon: string,
     }[]
 }
 
-const NavigationItems: INavigationItems[] = [
+const navigationItems: INavigationItems[] = [
     {
     title: "Platform",
     items: [
         {
             title: 'Home',
-            to: '/',
+            path: '/',
             icon: homeIcon,
         },
         {
             title: 'Publications',
-            to: '/publications',
+            path: '/publications',
             icon: publicationsIcon,
         },
         {
             title: 'People',
-            to: '/people',
+            path: '/people',
             icon: peopleIcon,
         },
         {
             title: 'Entities',
-            to: '/entities',
+            path: '/entities',
             icon: entitiesIcon,
         },
         {
             title: 'Administration',
-            to: '/administration',
+            path: '/administration',
             icon: administrationIcon,
         }
     ]
@@ -61,27 +61,27 @@ const NavigationItems: INavigationItems[] = [
         items: [
             {
                 title: 'Client contract',
-                to: '/clientContract',
+                path: '/clientContract',
                 icon: contractIcon,
             },
             {
                 title: 'Supplier contract',
-                to: '/supplierContract',
+                path: '/supplierContract',
                 icon: contractIcon,
             },
             {
                 title: 'Corporate',
-                to: '/corporate',
+                path: '/corporate',
                 icon: corporateIcon,
             },
             {
                 title: 'Group Norms',
-                to: '/groupNorms',
+                path: '/groupNorms',
                 icon: groupNormsIcon,
             },
             {
                 title: 'Real estate contracts',
-                to: '/realestateContracts',
+                path: '/realestateContracts',
                 icon: contractIcon,
             }
         ]
@@ -91,17 +91,17 @@ const NavigationItems: INavigationItems[] = [
         items: [
             {
                 title: "Bartosz Chowaniak",
-                to: '/profile',
+                path: '/profile',
                 icon: profilePicture,
             },
             {
                 title: 'Privacy',
-                to: '/privacy',
+                path: '/privacy',
                 icon: privacyIcon,
             },
             {
                 title: 'Profile',
-                to: '/profile',
+                path: '/profile',
                 icon: profileSettingsIcon,
             }
         ]
@@ -110,11 +110,11 @@ const NavigationItems: INavigationItems[] = [
         items: [
             {
                 title: 'Logout',
-                to: '/logout',
+                path: '/logout',
                 icon: logoutIcon
             }
         ]
     }
 ]
 
-export default NavigationItems;
+export default navigationItems;
