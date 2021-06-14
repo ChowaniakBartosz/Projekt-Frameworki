@@ -24,6 +24,11 @@ import privacyIcon from 'assets/icons/privacy.svg'
 import profileSettingsIcon from 'assets/icons/settings.svg'
 import logoutIcon from 'assets/icons/logout.svg'
 
+// Components
+import NavigationSection from './NavigationSection/NavigationSection';
+import { NavigationItem, INavigationItemProps } from './NavigationItem/NavigationItem';
+import NavigationFilter from './NavigationFilter/NavigationFilter';
+
 const MainWrapper = styled.nav`
     display: flex;
     flex-direction: column;
@@ -74,7 +79,7 @@ const Dropdown = styled.div`
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    top: 46px;
+    top: 42px;
     background-color: ${Colors.White};
     width: 100%;
     border: ${Colors.Silver} solid 1px;
@@ -82,34 +87,6 @@ const Dropdown = styled.div`
     border-radius: 6px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-`;
-
-const Filter = styled.input`
-    background-color: ${Colors.White};
-    border: ${Colors.Silver} solid 1px;
-    border-radius: 3px;
-    margin: .5em;
-    padding: 6px 3px;
-`;
-
-const Container = styled.div`
-    overflow: auto;
-    max-height: 300px;
-    padding: .5em;
-    padding-top: 0;
-`;
-
-const AccountSection = styled.div`
-    border-top: ${Colors.Silver} solid 1px;
-    border-bottom: ${Colors.Silver} solid 1px;
-    padding: .5em;
-`;
-
-const SectionTitle = styled.h3`
-    color: ${Colors.Gray};
-    font-size: .9em;
-    font-weight: bold;
-    padding: 3px 0px;
 `;
 
 const LogoutSection = styled.div`
@@ -124,42 +101,12 @@ const LogoutText = styled.div`
     margin-left: .4em;
 `;
 
-const Nav = styled.ul`
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-`;
-
-const NavItem = styled(Link)`
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    color: ${Colors.Gray};
-    padding: 3px 0px;
-    transition: all .3s;
-    text-decoration: none;
-    &:hover { background-color: #cfcfcf; }
-`;
-
-const NavItemText = styled.span`
-    align-self: center;
-    padding: 6px 3px;
-`;
-
-const NavItemIcon = styled.img`
-    align-self: flex-start;
-    justify-self: center;
-    padding: .3em;
-    width: 25px;
-`;
-
 const SeeProfile = styled.a`
     font-size: .8em;
     color: ${Colors.SecondaryText};
 `;
 
-const platform: Array<NavItemProps> = [
+const platform: Array<INavigationItemProps> = [
     {
         title: 'Home',
         to: '/',
@@ -187,7 +134,7 @@ const platform: Array<NavItemProps> = [
     }
 ];
 
-const workspaces : Array<NavItemProps> = [
+const workspaces : Array<INavigationItemProps> = [
     {
         title: 'Client contract',
         to: '/clientContract',
@@ -215,7 +162,7 @@ const workspaces : Array<NavItemProps> = [
     }
 ];
 
-const account : Array<NavItemProps> = [
+const account : Array<INavigationItemProps> = [
     {
         title: 'Privacy',
         to: '/privacy',
@@ -228,31 +175,10 @@ const account : Array<NavItemProps> = [
     }
 ]
 
-interface NavItemProps {
-    title: string,
-    to: string,
-    icon: string,
-}
-
-const NavElement: FC<NavItemProps> = ({icon, to, title, ...props}) => {
-    return (
-        <NavItem to={to}>
-            <NavItemIcon src={icon} alt={title} />
-            <NavItemText>
-                {props.children == null ? title : props.children}
-            </NavItemText>
-        </NavItem>
-    );
-}
-
 const Navigation: FC = (props) => {
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
-    const [filterText, setFilterText] = useState<string>('');
 
-    const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const text = e.target.value;
-        setFilterText(text);
-    }
+    const [filterText, setFilterText] = useState<string>('');
     
     return (
         <MainWrapper ref={wrapperRef} >
@@ -267,14 +193,22 @@ const Navigation: FC = (props) => {
             </Wrapper>
             {dropdownOpen &&
             <Dropdown>
-                <Filter type="text" placeholder="Filter..." value={filterText} onChange={inputHandler} autoFocus />
-                <Container>
+                <NavigationFilter value={filterText} setFilterText={setFilterText} />
+                <NavigationSection title="Platform" sectionItems={platform} filterText={filterText} />
+                <NavigationSection title="Workspaces" sectionItems={workspaces} filterText={filterText} />
+                <NavigationSection title="Account" sectionItems={account} filterText={filterText}>
+                    <NavigationItem to="/profile" icon={profilePicture} title="Bartosz Chowaniak">
+                        <p>Bartosz Chowaniak</p>
+                        <SeeProfile>See profile</SeeProfile>
+                    </NavigationItem>
+                </NavigationSection>
+                {/* <Container>
                     <SectionTitle>Platform</SectionTitle>
                     <Nav>
                         {
                             platform.map((item) => (
                                 item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
-                                <NavElement to={item.to} title={item.title} icon={item.icon} key={item.to} />
+                                <NavigationItem to={item.to} title={item.title} icon={item.icon} key={item.to} />
                             ))
                         }
                     </Nav>
@@ -284,7 +218,7 @@ const Navigation: FC = (props) => {
                         {
                             workspaces.map(item => (
                                 item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
-                                <NavElement to={item.to} title={item.title} icon={item.icon} key={item.to} />
+                                <NavigationItem to={item.to} title={item.title} icon={item.icon} key={item.to} />
                             ))
                         }
                     </Nav>
@@ -292,22 +226,22 @@ const Navigation: FC = (props) => {
                 <AccountSection>
                     <SectionTitle>Account</SectionTitle>
                     <Nav>
-                        <NavElement to="/profile" icon={profilePicture} title="Bartosz Chowaniak">
+                        <NavigationItem to="/profile" icon={profilePicture} title="Bartosz Chowaniak">
                             <p>Bartosz Chowaniak</p>
                             <SeeProfile>See profile</SeeProfile>
-                        </NavElement>
+                        </NavigationItem>
                         {
                             account.map(item => (
                                 item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
-                                <NavElement to={item.to} icon={item.icon} title={item.title} key={item.to} />
+                                <NavigationItem to={item.to} icon={item.icon} title={item.title} key={item.to} />
                             ))
                         }
                     </Nav>
-                </AccountSection>
+                </AccountSection>*/}
                 <LogoutSection>
                     <img src={logoutIcon} alt="Logout" />
                     <LogoutText>Logout</LogoutText>
-                </LogoutSection>
+                </LogoutSection> 
             </Dropdown>
             }
         </MainWrapper>

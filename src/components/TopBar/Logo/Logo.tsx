@@ -10,7 +10,7 @@ import logo from 'assets/logo.png';
 const Logo: FC = () => {
     return (
         <Link to="/">
-            <Image src={logo}  alt="Company's logo" title="MyCompanyName" height={36} />
+            <Image src={logo}  alt="Company's logo" title="My Company Name" height={36} />
         </Link>
     )
 }
