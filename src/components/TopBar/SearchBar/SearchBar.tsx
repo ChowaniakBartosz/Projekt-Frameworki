@@ -18,7 +18,7 @@ const Input = styled.input`
     border: ${Colors.PrimaryBackground} solid 1px;
     width: 100%;
     border-radius: 6px;
-    padding: 8px 4px;
+    padding: 8px 2.5em;
     margin: 0;
     text-align: center;
 `;

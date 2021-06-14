@@ -8,7 +8,7 @@ const Item = styled(Link)`
     justify-content: flex-start;
     align-content: center;
     color: ${Colors.Gray};
-    padding: 3px 0px;
+    padding: 3px 0.5em;
     transition: all .3s;
     text-decoration: none;
 

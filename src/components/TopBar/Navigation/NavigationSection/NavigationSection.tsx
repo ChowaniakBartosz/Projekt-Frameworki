@@ -6,15 +6,14 @@ import NavigationItem, { INavigationItemProps } from '../NavigationItem/Navigati
 const Wrapper = styled.div`
     overflow: auto;
     max-height: 300px;
-    padding: .5em;
     border-bottom: 1px solid ${Colors.PrimaryBackground};
 `;
 
-const SectionTitle = styled.h2`
+const Title = styled.h2`
     color: ${Colors.Gray};
     font-size: .9em;
     font-weight: bold;
-    padding: 3px 0px;
+    padding: 0.5em 0.7em 0.4em;
 `;
 
 const SectionItems = styled.ul`
@@ -24,22 +23,31 @@ const SectionItems = styled.ul`
     flex-direction: column;
 `;
 
+const SeeProfile = styled.a`
+    font-size: .8em;
+    color: ${Colors.SecondaryText};
+`;
+
 interface INavigationSectionProps {
-    title: string,
+    title?: string,
     sectionItems: INavigationItemProps[],
     filterText: string,
 }
 
 const NavigationSection: FC<INavigationSectionProps> = ({title, sectionItems, filterText, ...props}) => {
+    const sectionTitle = title;
+
     return (
         <Wrapper>
-            <SectionTitle>{title}</SectionTitle>
+            {title && 
+                <Title>{title}</Title>
+            }
             {props.children}
             <SectionItems>
                 {
-                    sectionItems.map((item) => (
-                        item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
-                        <NavigationItem to={item.to} title={item.title} icon={item.icon} key={item.to} />
+                    sectionItems.map(({to, title, icon}) => (
+                        title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
+                        <NavigationItem to={to} title={title} icon={icon} key={to} />
                     ))
                 }
             </SectionItems>

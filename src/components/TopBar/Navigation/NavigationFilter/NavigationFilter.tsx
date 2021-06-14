@@ -6,8 +6,8 @@ const Input = styled.input`
     background-color: ${Colors.White};
     border: ${Colors.Silver} solid 1px;
     border-radius: 3px;
-    margin: .5em;
-    padding: 6px 3px;
+    margin: 0.5em 0.7em;
+    padding: 0.5em;
 `;
 
 const NavigationFilter = (props: any) => { // naprawic typ, na razie tak zrobione do zdebugowania
