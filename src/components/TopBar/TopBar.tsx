@@ -1,16 +1,9 @@
-import React, {FC} from 'react';
-import { Link } from 'react-router-dom';
+import {FC} from 'react';
 import styled from 'styled-components';
 
 // Styled Helpers
 import {Colors} from 'styledHelpers/Colors';
-import {Center, FlexColumn, FlexRow} from 'styledHelpers/Components';
-
-// Assets
-import logo from 'assets/logo.png';
-import privacyIcon from 'assets/icons/privacy.svg'
-import peopleIcon from 'assets/icons/people.svg'
-import configIcon from 'assets/icons/cog.svg'
+import {FlexRow} from 'styledHelpers/Components';
 
 // Components
 import Logo from './Logo/Logo';
@@ -18,7 +11,7 @@ import Navigation from './Navigation/Navigation';
 import SearchBar from './SearchBar/SearchBar';
 import Menu from './Menu/Menu';
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
     background-color: ${Colors.White};
     box-shadow: 0px 0px 15px -5px ${Colors.Silver};
     z-index: 999;
@@ -26,9 +19,9 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    flex-basis: 100%;
     padding: .3em 2em;
     gap: 1em;
 `;
@@ -41,7 +34,6 @@ const LeftWrapper = styled.div`
 
 const RightWrapper = styled.div`
     display: flex;
-    justify-content: flex-end;
     align-items: center;
 `;
 

@@ -20,15 +20,13 @@ export const JustifyCenter = styled.div`
 
 export const AlignCenter = styled.div`
     display: flex;
-    align-content: center;
+    align-items: center;
     position: relative;
 `;
 
 export const Center = styled.div`
     display: flex;
     justify-content: center;
-    justify-items: center;
-    align-content: center;
     align-items: center;
     position: relative;
     width: 100%;

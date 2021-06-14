@@ -215,7 +215,7 @@ const workspaces : Array<NavItemProps> = [
     }
 ];
 
-const accounts : Array<NavItemProps> = [
+const account : Array<NavItemProps> = [
     {
         title: 'Privacy',
         to: '/privacy',
@@ -297,7 +297,7 @@ const Navigation: FC = (props) => {
                             <SeeProfile>See profile</SeeProfile>
                         </NavElement>
                         {
-                            accounts.map(item => (
+                            account.map(item => (
                                 item.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) &&
                                 <NavElement to={item.to} icon={item.icon} title={item.title} key={item.to} />
                             ))

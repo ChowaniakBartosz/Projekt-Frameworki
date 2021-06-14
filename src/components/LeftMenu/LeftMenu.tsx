@@ -14,7 +14,7 @@ import IMenuItem from 'interfaces/IMenuItem';
 import IMenuInterface from 'interfaces/IMenuItem';
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.aside`
     width: 300px;
     flex-shrink: 0;
 `;
