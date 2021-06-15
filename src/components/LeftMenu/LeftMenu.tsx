@@ -1,76 +1,40 @@
-import React, { FC } from 'react';
-import {Link} from 'react-router-dom'
+import { FC } from 'react';
 import styled from 'styled-components';
-import {Colors} from 'styledHelpers/Colors';
 
-// Modules
+// Components
 import Profile from './Profile/Profile';
+import LeftMenuList from './LeftMenuList/LeftMenuList'
+// Interfaces
+import {ILeftMenuListItem} from './LeftMenuList/LeftMenuListItem/LeftMenuListItem'
 
 // Assets
 import publicationIcon from 'assets/icons/publications.svg'
 import ekosystemIcon from 'assets/icons/ecosystem.svg'
 import entitiesIcon from 'assets/icons/entities.svg'
-import IMenuItem from 'interfaces/IMenuItem';
-import IMenuInterface from 'interfaces/IMenuItem';
 
 
 const Wrapper = styled.aside`
-    width: 300px;
-    flex-shrink: 0;
-`;
-
-const Menu = styled.ul`
-    padding: 1em;
-`;
-
-const MenuItem = styled.li`
     display: flex;
-    justify-content: flex-start;
-    align-content: center;
+    flex-direction: column;
+    flex: 0 0 300px;
+    gap: 1em;
 `;
-
-const MenuIcon = styled.img`
-    padding: 1em;
-    width: 24px;
-    color: ${Colors.PrimaryText};
-`;
-
-const MenuText = styled(Link)`
-    padding: 1em;
-    padding-left: 0px;
-    font-size: 1em;
-    color: ${Colors.PrimaryText};
-    text-decoration: none;
-
-    &:hover {
-        color: ${Colors.Silver};
-    }
-`;
-
-const Item: FC<IMenuItem> = ({text, to, icon, ...props}) => {
-    return (
-        <MenuItem>
-            <MenuIcon src={icon} />
-            <MenuText to={to}>{text}</MenuText>
-        </MenuItem>
-    );
-}
 
 const LeftMenu: FC = () => {
-    const menuItems : Array<IMenuItem> = [
+    const menuItems : Array<ILeftMenuListItem> = [
         {
             text: 'Publications',
-            to: '/publications',
+            path: '/publications',
             icon: publicationIcon,
         },
         {
             text: 'Ecosystem',
-            to: '/ecosystem',
+            path: '/ecosystem',
             icon: ekosystemIcon,
         },
         {
             text: 'Entities',
-            to: '/entities',
+            path: '/entities',
             icon: entitiesIcon,
         }
     ];
@@ -78,14 +42,7 @@ const LeftMenu: FC = () => {
     return (
         <Wrapper>
             <Profile />
-
-            <Menu>
-                {
-                    menuItems.map(item => (
-                        <Item to={item.to} icon={item.icon} text={item.text} />
-                    ))
-                }
-            </Menu>
+            <LeftMenuList listItems={menuItems} />
         </Wrapper>
     );
 } 
