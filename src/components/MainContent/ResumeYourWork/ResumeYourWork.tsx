@@ -70,8 +70,8 @@ interface IComment {
 export class ResumeYourWork extends Component {
     state = {
         comments: [],
-        filterText: '',
-        currentPage: 0
+        filterComments: '',
+        currentPage: 1
     }
 
     componentDidMount(): void {
@@ -89,26 +89,28 @@ export class ResumeYourWork extends Component {
     
     
     render() {
-        const filteredComments = this.state.comments
+        const filteredComments: never[] = this.state.comments
         .filter((item: IComment) => (
-            item.name.toLocaleLowerCase()
-            .includes(this.state.filterText
-            .toLowerCase())
-        ));
+            item.name
+            .toLocaleLowerCase()
+            .includes(
+                this.state.filterComments
+                .toLowerCase()
+        )));
 
         const filterButtonHandle = (e: ChangeEvent<HTMLInputElement>): void => {
             e.preventDefault();
     
             if (e.target != null) {
                 this.setState({
-                    filterText: e.target.value
+                    filterComments: e.target.value
                 });
             }
         }
     
         const changePage = (data: any): void => {
             this.setState(prevState => ({
-                currentPage: data.selected
+                currentPage: data.selected+1
             }));
             console.log('current page ' + this.state.currentPage);
         }
@@ -127,7 +129,7 @@ export class ResumeYourWork extends Component {
                 </Heading>
                 <List>
                     {
-                        filteredComments.slice((this.state.currentPage)*10, ((this.state.currentPage+1)*10)).map((item: IComment) =>
+                        filteredComments.slice((this.state.currentPage-1)*10, (this.state.currentPage*10)).map((item: IComment) =>
                             <Card title={item.name} content={item.body} />
                             )
                     }

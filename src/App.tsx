@@ -28,7 +28,6 @@ const Container = styled.div`
   display: flex;
   padding: 2em;
   gap: 1em;
-  flex: 0 1 100%;
 `;
 
 const Content = styled.main`

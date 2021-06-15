@@ -7,7 +7,7 @@ import {WorkspacesItem, IWorkspacesItemProps} from './WorkspacesItem/WorkspacesI
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/swiper.scss';
-import "./swiper.css";
+import "./styles/swiper.css";
 
 // Assets
 import CardIcon from 'assets/icons/entities2.svg'
@@ -21,7 +21,7 @@ const Container = styled.section`
     overflow-x: hidden !important;
 `;
 
-export const Workspaces: FC = () => {
+const Workspaces: FC = () => {
     // to juz istnieje, mozna importowac z nawigacji
     const workspaces: Array<IWorkspacesItemProps> = [
         {
@@ -68,3 +68,5 @@ export const Workspaces: FC = () => {
         </>
     );
 } 
+
+export default Workspaces;
