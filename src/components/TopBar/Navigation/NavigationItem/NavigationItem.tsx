@@ -10,7 +10,7 @@ const Route = styled(Link)`
     justify-content: flex-start;
     align-items: center;
     color: ${Colors.Gray};
-    padding: 0.3em 0.5em;
+    padding: 0.5em;
     transition: all .3s;
     text-decoration: none;
     gap: 0.5em;

@@ -13,16 +13,14 @@ const Wrapper = styled.nav`
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 100%;
     min-width: 200px;
 `;
 
 const Button = styled.div`
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    width: 100%;
     gap: 0.5em;
+    padding: 0 0.5em;
 
     &:hover {
         cursor: pointer;
@@ -30,22 +28,20 @@ const Button = styled.div`
 `;
 
 const ButtonIcon = styled.img`
-    min-width: 32px;
-    user-select: none; // Disabling selecting in navigation
+    min-width: 24px;
+    user-select: none;
 `;
 
 const ButtonLabel = styled.span`
     flex-grow: 1;
-    user-select: none; // Disabling selecting in navigation
+    user-select: none;
 `;
 
 const DropdownArrow = styled.img`
-    justify-self: flex-end;
-    user-select: none; // Disabling selecting in navigation
+    user-select: none;
 `;
 
 const Navigation: FC = () => {
-    // Dropdown hook
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
     return (

@@ -1,23 +1,41 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 
 // Assets
-import CityImage from 'assets/office.jpg'
 import {Colors} from 'styledHelpers/Colors'
+import work from 'assets/work.jpg'
 
-
-const Wrapper = styled.div`
+const Wrapper = styled.li`
 display: flex;
-margin: .2em;
+gap: 1em;
 `;
 
-const Image = styled.img`
+const Title = styled.h3`
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    
+    &:first-letter {
+        text-transform: capitalize;
+    }
+`;
+
+const Body = styled.p`
+    margin-bottom: 0.5em;
+    
+    &:first-letter {
+        text-transform: capitalize;
+    }
+`;
+
+const Thumbnail = styled.div`
     width: 64px;
     height: 64px;
+    background-image: url(${work});
+    background-size: cover;
+    flex-shrink: 0;
 `;
 
 const Content = styled.div`
-    padding: .4em;
     color: ${Colors.PrimaryText};
     display: flex;
     flex-direction: column;
@@ -26,18 +44,29 @@ const Content = styled.div`
 const InformationContainer = styled.div`
     justify-self: flex-end;
     color: ${Colors.Gray};
-    margin-top: .6em;
     font-size: .8em;
 `;
 
-const Publication: FC = () => {
+interface IPublication {
+    title: string,
+    text: string,
+    // image: string,
+    date: string,
+}
+
+const Publication: FC<IPublication> = ({title, text, date, ...props}) => {
     return (
         <Wrapper>
-            <Image src={CityImage} alt="City image" />
+            <Thumbnail />
             <Content>
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptatum deleniti impedit, blanditiis corporis ad excepturi, </h3>
+                <Title>
+                    {title}
+                </Title>
+                <Body>
+                    {text}
+                </Body>
                 <InformationContainer>
-                    1 Styczeń 2021
+                    {date}
                 </InformationContainer>
             </Content>
         </Wrapper>

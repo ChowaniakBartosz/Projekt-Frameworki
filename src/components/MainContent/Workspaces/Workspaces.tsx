@@ -43,12 +43,7 @@ const Workspaces: FC = () => {
             title: "Group Norms",
             icon: CardIcon,
             lastUpdate: "4",
-        },
-        {
-            title: "Real estate contracts",
-            icon: CardIcon,
-            lastUpdate: "5",
-        },
+        }
     ];
 
     return (

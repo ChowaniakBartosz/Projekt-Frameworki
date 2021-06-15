@@ -36,7 +36,7 @@ const ListItemButton = styled.div`
     background-color: #fff;
     border: ${Colors.PrimaryText} solid 1px;
     border-radius: 3px;
-    padding: 0.4em;
+    padding: 0.4em 0.6em;
 `;
 
 export interface ILeftMenuListItem {

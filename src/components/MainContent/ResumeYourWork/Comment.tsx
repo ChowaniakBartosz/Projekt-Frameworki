@@ -16,11 +16,19 @@ const Wrapper = styled.li`
 const Title = styled.h3`
     font-size: 1.2em;
     color: ${Colors.BadgeBackground};
+
+    &:first-letter {
+        text-transform: capitalize;
+    }
 `;
 
 const Content = styled.p`
     margin-top: .8em;
     color: ${Colors.Gray};
+
+    &:first-letter {
+        text-transform: capitalize;
+    }
 `;
 
 const Footer = styled.div`

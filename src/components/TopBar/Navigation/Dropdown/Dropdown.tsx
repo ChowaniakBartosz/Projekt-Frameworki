@@ -15,11 +15,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 2.5em;
+    top: 2.3em;
     background-color: ${Colors.White};
     flex-basis: 100%;
 
-    // Border
     border: ${Colors.Silver} solid 1px;
     border-top: 0;
     border-radius: 6px;
