@@ -1,14 +1,16 @@
-import React, { Component, FC, ChangeEvent, MouseEvent } from 'react'
+import { Component } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
-import ReactPaginate from 'react-paginate'
-import {Colors} from 'styledHelpers/Colors'
-import {FlexRow, SectionTitle} from 'styledHelpers/Components'
 
 // Components
 import Publications from 'components/MainContent/LatestPublications/LatestPublications';
 import {Workspaces} from 'components/MainContent/Workspaces/Workspaces'
 import ResumeYourWork from 'components/MainContent/ResumeYourWork/ResumeYourWork'
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 100%;
+`;
 
 interface IHomePageProps {
 }
@@ -20,11 +22,11 @@ class HomePage extends Component<IHomePageProps> {
 
     render() {
         return (
-            <>
+            <Wrapper>
                 <Publications />
                 <Workspaces />
                 <ResumeYourWork />
-            </>
+            </Wrapper>
         );
     }
 }

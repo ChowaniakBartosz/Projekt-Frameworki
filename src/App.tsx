@@ -25,13 +25,15 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 2em;
   display: flex;
+  padding: 2em;
   gap: 1em;
+  flex: 0 1 100%;
 `;
 
 const Content = styled.main`
-flex-shrink: 1;
+display: flex;
+flex-basis: 100%;
 `;
 
 const App: FC = () => {

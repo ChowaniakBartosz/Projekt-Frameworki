@@ -13,7 +13,7 @@ import { Colors } from 'styledHelpers/Colors';
 import axios from 'axios';
 
 // Components
-import Card from 'components/MainContent/ResumeYourWork/Resume'
+import Card from 'components/MainContent/ResumeYourWork/Comment'
 
 const Wrapper = styled.section`
     display: flex;
@@ -48,9 +48,10 @@ const RightWrapper = styled.div`
     gap: 1em;
 `;
 
-const List = styled.section`
+const List = styled.ul`
     display: flex;
     flex-direction: column;
+    gap: 0.5em;
 `;
 
 interface IComments {
@@ -70,7 +71,7 @@ export class ResumeYourWork extends Component {
     state = {
         comments: [],
         filterText: '',
-        currentPage: 1
+        currentPage: 0
     }
 
     componentDidMount(): void {
@@ -85,29 +86,39 @@ export class ResumeYourWork extends Component {
             })
     }
 
-    filterButtonHandle(e: ChangeEvent<HTMLInputElement>) : void {
-        e.preventDefault();
-
-        if (e.target != null) {
-            this.setState({
-                filterText: e.target.value
-            });
-        }
-    }
-
-    handlePageClick = (data: any): void => {
-        this.setState({
-            currentPage: data.selected
-        });
-    }
-
+    
+    
     render() {
+        const filteredComments = this.state.comments
+        .filter((item: IComment) => (
+            item.name.toLocaleLowerCase()
+            .includes(this.state.filterText
+            .toLowerCase())
+        ));
+
+        const filterButtonHandle = (e: ChangeEvent<HTMLInputElement>): void => {
+            e.preventDefault();
+    
+            if (e.target != null) {
+                this.setState({
+                    filterText: e.target.value
+                });
+            }
+        }
+    
+        const changePage = (data: any): void => {
+            this.setState(prevState => ({
+                currentPage: data.selected
+            }));
+            console.log('current page ' + this.state.currentPage);
+        }
+                
         return (
             <Wrapper>
                 <Heading>
                     <SectionTitle>Resume your work</SectionTitle>
                     <RightWrapper>
-                        <FilterInput type="text" placeholder="Filter resumes" onChange={this.filterButtonHandle.bind(this)}/>
+                        <FilterInput type="text" placeholder="Filter resumes" onChange={filterButtonHandle.bind(this)}/>
                         <FollowedButton>
                             <span>All items</span>
                             <img src={DropdownArrow} alt="Dropdown" />
@@ -115,12 +126,10 @@ export class ResumeYourWork extends Component {
                     </RightWrapper>
                 </Heading>
                 <List>
-                {
-                        this.state.comments.slice((this.state.currentPage-1)*10, this.state.currentPage*10-1)
-                            .map((item: IComment) => (
-                                item.name.toLocaleLowerCase().includes(this.state.filterText.toLowerCase()) &&
-                                <Card title={item.name} content={item.body} />
-                            ))
+                    {
+                        filteredComments.slice((this.state.currentPage)*10, ((this.state.currentPage+1)*10)).map((item: IComment) =>
+                            <Card title={item.name} content={item.body} />
+                            )
                     }
                 </List>
                 <ReactPaginate
@@ -128,10 +137,10 @@ export class ResumeYourWork extends Component {
                 nextLabel="Next"
                 breakLabel="..."
                 breakClassName="break-me"
-                pageCount={this.state.comments.length/10}
+                pageCount={Math.ceil(filteredComments.length/10)}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={2}
-                onPageChange={this.handlePageClick}
+                onPageChange={changePage}
                 containerClassName="pagination"
                 activeClassName="active"
                 />

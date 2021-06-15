@@ -6,13 +6,11 @@ import ResumeButton from './ResumeButton'
 import logo from 'assets/icons/network.svg'
 import corporateLogo from 'assets/icons/entities.svg'
 
-const Container = styled.div`
+const Wrapper = styled.li`
     background-color: ${Colors.White};
     padding: .5em 1em;
-    margin-top: .8em;
     box-shadow: 0px 3px 3px ${Colors.Silver};
     border-radius: 3px;
-    position: relative;
 `;
 
 const Title = styled.h3`
@@ -34,19 +32,19 @@ interface CardProps {
     title : string,
     content? : string;
 }
-const Card: FC<CardProps> = (props) => {
+const Card: FC<CardProps> = ({title, content, ...props}) => {
     return (
-        <Container>
-            <Title>{ props.title }</Title>
+        <Wrapper>
+            <Title>{title}</Title>
             <Content>
-                { props.content != null ? props.content : props.children }
+                { content != null ? content : props.children }
             </Content>
             <Footer>
                 <ResumeButton icon={logo} text="Company" />
                 <ResumeButton icon={corporateLogo} text="Corporate" />
                 <ResumeButton text="Updated 1 day ago by Unknown User" />
             </Footer>
-        </Container>
+        </Wrapper>
     )
 }
 export default Card; 
