@@ -1,6 +1,7 @@
 import { ChangeEvent, Component, MouseEvent } from 'react'
 import styled from 'styled-components';
 import { FlexRow, SectionTitle } from 'styledHelpers/Components';
+import ReactPaginate from 'react-paginate'
 
 // Assets
 import FilterIcon from 'assets/icons/search.png'
@@ -50,7 +51,7 @@ const Container = styled.section`
 
 interface IComments {
     comments : Array<IComment>,
-    filterPattern : string
+    filterText : string
 }
 
 interface IComment {
@@ -64,7 +65,8 @@ interface IComment {
 export class ResumeYourWork extends Component {
     state = {
         comments: [],
-        filterPattern: ''
+        filterText: '',
+        currentPage: 1
     }
 
     componentDidMount(): void {
@@ -84,9 +86,15 @@ export class ResumeYourWork extends Component {
 
         if (e.target != null) {
             this.setState({
-                filterPattern: e.target.value
+                filterText: e.target.value
             });
         }
+    }
+
+    handlePageClick = (data: any): void => {
+        this.setState({
+            currentPage: data.selected
+        });
     }
 
     render() {
@@ -104,14 +112,25 @@ export class ResumeYourWork extends Component {
                 </TitleWrapper>
 
                 <Container>
-                    {
-                        this.state.comments.map((item: IComment) => (
-
-                            item.name.toLocaleLowerCase().includes(this.state.filterPattern.toLocaleLowerCase()) &&
-                            <Card title={item.name} content={item.body} />
-                        ))
+                {
+                        this.state.comments.slice(this.state.currentPage, this.state.currentPage + 10)
+                            .map((item: IComment) => (
+                                item.name.toLocaleLowerCase().includes(this.state.filterText.toLowerCase()) &&
+                                <Card title={item.name} content={item.body} />
+                            ))
                     }
-                    {/* <ReactPaginate pageCount={500} pageRangeDisplayed={100} marginPagesDisplayed={10} /> */}
+                    <ReactPaginate
+                        previousLabel="Previous"
+                        nextLabel="Next"
+                        breakLabel="..."
+                        breakClassName="break-me"
+                        pageCount={this.state.comments.length}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={2}
+                        onPageChange={this.handlePageClick}
+                        containerClassName="pagination"
+                        activeClassName="active"
+                    />
                 </Container>
             </Wrapper>
         )
