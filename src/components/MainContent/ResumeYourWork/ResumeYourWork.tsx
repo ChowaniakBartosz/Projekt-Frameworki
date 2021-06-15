@@ -109,10 +109,9 @@ export class ResumeYourWork extends Component {
         }
     
         const changePage = (data: any): void => {
-            this.setState(prevState => ({
-                currentPage: data.selected+1
-            }));
-            console.log('current page ' + this.state.currentPage);
+            this.setState({
+                currentPage: (data.selected+1)
+            });
         }
                 
         return (
