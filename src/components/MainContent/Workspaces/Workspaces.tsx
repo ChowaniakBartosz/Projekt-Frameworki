@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import {Colors} from 'styledHelpers/Colors'
-import {WorkspacesItem, IWorkspacesItemProps} from './WorkspacesItem/WorkspacesItem'
+import {WorkspacesItem, IWorkspacesItem} from './WorkspacesItem/WorkspacesItem'
 
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,7 +10,9 @@ import 'swiper/swiper.scss';
 import "./styles/swiper.css";
 
 // Assets
-import CardIcon from 'assets/icons/entities2.svg'
+import CardIcon from 'assets/icons/entities.svg'
+import ContractIcon from 'assets/icons/contract.svg'
+import BookIcon from 'assets/icons/book.svg'
 import { SectionTitle } from 'styledHelpers/Components';
 
 const Container = styled.section`
@@ -18,20 +20,19 @@ const Container = styled.section`
     flex-direction: column;
     width: 100%;
     position: relative;
-    overflow-x: hidden !important;
 `;
 
 const Workspaces: FC = () => {
     // to juz istnieje, mozna importowac z nawigacji
-    const workspaces: Array<IWorkspacesItemProps> = [
+    const workspaces: Array<IWorkspacesItem> = [
         {
             title: "Client contract",
-            icon: CardIcon,
+            icon: ContractIcon,
             lastUpdate: "1",
         },
         {
             title: "Supplier contract",
-            icon: CardIcon,
+            icon: ContractIcon,
             lastUpdate: "2",
         },
         {
@@ -41,16 +42,21 @@ const Workspaces: FC = () => {
         },
         {
             title: "Group Norms",
-            icon: CardIcon,
+            icon: BookIcon,
             lastUpdate: "4",
-        }
+        },
+        // {
+        //     title: "Real estate contracts",
+        //     icon: CardIcon,
+        //     lastUpdate: "5",
+        // },
     ];
 
     return (
         <>
             <Container>
                 <SectionTitle>Workspaces</SectionTitle>
-                <Swiper spaceBetween={5} slidesPerView={'auto'}>
+                <Swiper slidesPerView="auto">
                     {
                         workspaces.map(({icon, title, lastUpdate}) => (
                             <SwiperSlide>
