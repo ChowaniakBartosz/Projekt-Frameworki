@@ -40,5 +40,4 @@ export const SectionTitle = styled.h2`
     align-items: center;
     font-size: 1.4em;
     color: ${Colors.PrimaryText};
-    margin: 0.5em 0;
 `;

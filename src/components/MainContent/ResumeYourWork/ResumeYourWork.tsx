@@ -1,7 +1,10 @@
 import { ChangeEvent, Component, MouseEvent } from 'react'
 import styled from 'styled-components';
 import { FlexRow, SectionTitle } from 'styledHelpers/Components';
+
+// Pagination
 import ReactPaginate from 'react-paginate'
+import './styles/pagination.css'; // styling
 
 // Assets
 import FilterIcon from 'assets/icons/search.png'
@@ -15,6 +18,7 @@ import Card from 'components/MainContent/ResumeYourWork/Resume'
 const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
+    gap: 1em;
 `;
 
 const FilterInput = styled.input`
@@ -25,7 +29,7 @@ const FilterInput = styled.input`
     border-radius: 3px;
 `;
 
-const TitleWrapper = styled.div`
+const Heading = styled.div`
     display: flex;
     justify-content: space-between;
 `;
@@ -44,7 +48,7 @@ const RightWrapper = styled.div`
     gap: 1em;
 `;
 
-const Container = styled.section`
+const List = styled.section`
     display: flex;
     flex-direction: column;
 `;
@@ -100,7 +104,7 @@ export class ResumeYourWork extends Component {
     render() {
         return (
             <Wrapper>
-                <TitleWrapper>
+                <Heading>
                     <SectionTitle>Resume your work</SectionTitle>
                     <RightWrapper>
                         <FilterInput type="text" placeholder="Filter resumes" onChange={this.filterButtonHandle.bind(this)}/>
@@ -109,29 +113,28 @@ export class ResumeYourWork extends Component {
                             <img src={DropdownArrow} alt="Dropdown" />
                         </FollowedButton>
                     </RightWrapper>
-                </TitleWrapper>
-
-                <Container>
+                </Heading>
+                <List>
                 {
-                        this.state.comments.slice(this.state.currentPage, this.state.currentPage + 10)
+                        this.state.comments.slice((this.state.currentPage-1)*10, this.state.currentPage*10-1)
                             .map((item: IComment) => (
                                 item.name.toLocaleLowerCase().includes(this.state.filterText.toLowerCase()) &&
                                 <Card title={item.name} content={item.body} />
                             ))
                     }
-                    <ReactPaginate
-                        previousLabel="Previous"
-                        nextLabel="Next"
-                        breakLabel="..."
-                        breakClassName="break-me"
-                        pageCount={this.state.comments.length}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={2}
-                        onPageChange={this.handlePageClick}
-                        containerClassName="pagination"
-                        activeClassName="active"
-                    />
-                </Container>
+                </List>
+                <ReactPaginate
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel="..."
+                breakClassName="break-me"
+                pageCount={this.state.comments.length/10}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={2}
+                onPageChange={this.handlePageClick}
+                containerClassName="pagination"
+                activeClassName="active"
+                />
             </Wrapper>
         )
     }
