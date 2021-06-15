@@ -11,12 +11,7 @@ import "./swiper.css";
 
 // Assets
 import CardIcon from 'assets/icons/entities2.svg'
-
-export const Title = styled.h2`
-    color: ${Colors.PrimaryText};
-    font-size: 1.4em;
-    padding: 0.5em 1em;
-`;
+import { SectionTitle } from 'styledHelpers/Components';
 
 const Container = styled.section`
     display: flex;
@@ -59,7 +54,7 @@ export const Workspaces: FC = () => {
     return (
         <>
             <Container>
-                <Title>Workspaces</Title>
+                <SectionTitle>Workspaces</SectionTitle>
                 <Swiper spaceBetween={5} slidesPerView={'auto'}>
                     {
                         workspaces.map(({icon, title, lastUpdate}) => (

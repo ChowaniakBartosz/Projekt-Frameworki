@@ -7,6 +7,7 @@ import Publication from './Publication/Publication';
 // Assets
 import {Colors} from 'styledHelpers/Colors';
 import CityImage from 'assets/city.jpg';
+import { SectionTitle } from 'styledHelpers/Components';
 
 const Wrapper = styled.section`
     background-color: ${Colors.White};
@@ -45,13 +46,6 @@ const Content = styled.div`
     position: relative;
 `;
 
-const Title = styled.h2`
-    font-size: 1.4em;
-    color: ${Colors.PrimaryText};
-    justify-self: flex-start;
-    margin-bottom: .4em;
-`;
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -73,7 +67,7 @@ const LatestPublications: FC = () => {
             </BrandImage>
 
             <Content>
-                <Title>Latest publications</Title>
+                <SectionTitle>Latest publications</SectionTitle>
                 <Container>
                     <Publication />
                     <Publication />

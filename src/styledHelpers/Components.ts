@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from './Colors';
 
 export const FlexRow = styled.div`
     display: flex;
@@ -31,4 +32,13 @@ export const Center = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+`;
+
+export const SectionTitle = styled.h2`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.4em;
+    color: ${Colors.PrimaryText};
+    margin: 0.5em 0;
 `;
