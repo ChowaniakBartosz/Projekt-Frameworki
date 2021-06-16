@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     flex: 0 1 100%;
-    gap: 1em;
+    gap: 1.5em;
 `;
 
 const HomePage: FC = () => {

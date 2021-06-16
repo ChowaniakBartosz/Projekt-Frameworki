@@ -22,6 +22,11 @@ const Container = styled.section`
     position: relative;
 `;
 
+const Title = styled(SectionTitle)`
+    padding: 0 1em;
+    margin-bottom: 0.2em;
+`;
+
 const Workspaces: FC = () => {
     // to juz istnieje, mozna importowac z nawigacji
     const workspaces: Array<IWorkspacesItem> = [
@@ -55,7 +60,7 @@ const Workspaces: FC = () => {
     return (
         <>
             <Container>
-                <SectionTitle>Workspaces</SectionTitle>
+                <Title>Workspaces</Title>
                 <Swiper slidesPerView="auto">
                     {
                         workspaces.map(({icon, title, lastUpdate}) => (

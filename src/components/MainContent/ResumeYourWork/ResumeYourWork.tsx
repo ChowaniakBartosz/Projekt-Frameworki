@@ -18,12 +18,14 @@ import Card from 'components/MainContent/ResumeYourWork/Comment'
 const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    padding-bottom: 10em;
 `;
 
 const Heading = styled.div`
     display: flex;
     justify-content: space-between;
+    padding: 0 1em;
+    margin-bottom: 0.5em;
 `;
 
 const FilterWrapper = styled.div`
@@ -35,9 +37,11 @@ const FilterWrapper = styled.div`
 const FilterInput = styled.input`
     margin: 0;
     padding: 0.5em;
+    padding-right: 1.8em;
     border: ${Colors.PrimaryBackground} solid 1px;
     background-color: ${Colors.White};
     border-radius: 3px;
+    width: 140px;
 `;
 
 const ClearFilterButton = styled.button`
@@ -77,6 +81,7 @@ const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    margin-bottom: 2em;
 `;
 
 interface IComments {
@@ -145,7 +150,7 @@ export class ResumeYourWork extends Component {
                     <SectionTitle>Resume your work</SectionTitle>
                     <RightWrapper>
                         <FilterWrapper>
-                            <FilterInput type="text" placeholder="Filter resumes" value={this.state.filterComments} onChange={filterButtonHandle}/>
+                            <FilterInput type="text" placeholder="Filter resumes..." value={this.state.filterComments} onChange={filterButtonHandle}/>
                             {this.state.filterComments !== '' &&
                                 <ClearFilterButton
                                 title="Clear filter"
