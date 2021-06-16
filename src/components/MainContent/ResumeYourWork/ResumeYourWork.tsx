@@ -21,6 +21,17 @@ const Wrapper = styled.section`
     gap: 1em;
 `;
 
+const Heading = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const FilterWrapper = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+`;
+
 const FilterInput = styled.input`
     margin: 0;
     padding: 0.5em;
@@ -29,9 +40,23 @@ const FilterInput = styled.input`
     border-radius: 3px;
 `;
 
-const Heading = styled.div`
+const ClearFilterButton = styled.button`
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    opacity: 0.5;
+    font-size: 1.2em;
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 0;
+
+    &:hover {
+        opacity: 1;
+    }
 `;
 
 const FollowedButton = styled.div`
@@ -119,7 +144,19 @@ export class ResumeYourWork extends Component {
                 <Heading>
                     <SectionTitle>Resume your work</SectionTitle>
                     <RightWrapper>
-                        <FilterInput type="text" placeholder="Filter resumes" onChange={filterButtonHandle.bind(this)}/>
+                        <FilterWrapper>
+                            <FilterInput type="text" placeholder="Filter resumes" value={this.state.filterComments} onChange={filterButtonHandle}/>
+                            {this.state.filterComments !== '' &&
+                                <ClearFilterButton
+                                title="Clear filter"
+                                onClick={() =>
+                                    this.setState({
+                                    filterComments: ''
+                                })}>
+                                    &#10006;
+                                </ClearFilterButton>
+                            }
+                        </FilterWrapper>
                         <FollowedButton>
                             <span>All items</span>
                             <img src={DropdownArrow} alt="Dropdown" />
