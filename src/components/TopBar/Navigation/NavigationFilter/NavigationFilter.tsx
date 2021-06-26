@@ -11,6 +11,11 @@ const Input = styled.input`
     border: ${Colors.Silver} solid 1px;
     border-radius: 3px;
     padding: 0.5em;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 3px ${Colors.Silver};
+    }
 `;
 
 interface INavigationFilter {

@@ -22,7 +22,8 @@ const BackgroundImage = styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    flex-basis: 30%;
+    height: 100%;
+    aspect-ratio: 1;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 `;
@@ -74,6 +75,7 @@ const Route = styled(Link)`
     font-size: 1em;
     color: ${Colors.SecondaryText};
     text-decoration: none;
+    margin-bottom: 1em;
 
     &:hover {
         color: ${Colors.Silver};

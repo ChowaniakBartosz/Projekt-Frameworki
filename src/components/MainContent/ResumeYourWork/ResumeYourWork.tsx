@@ -18,7 +18,7 @@ import Card from 'components/MainContent/ResumeYourWork/Comment'
 const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
-    padding-bottom: 10em;
+    padding-bottom: 4em;
 `;
 
 const Heading = styled.div`
@@ -42,6 +42,12 @@ const FilterInput = styled.input`
     background-color: ${Colors.White};
     border-radius: 3px;
     width: 140px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid ${Colors.Silver};
+        box-shadow: 0 0 3px ${Colors.Silver};
+    }
 `;
 
 const ClearFilterButton = styled.button`
@@ -163,7 +169,7 @@ export class ResumeYourWork extends Component {
                             }
                         </FilterWrapper>
                         <FollowedButton>
-                            <span>All items</span>
+                            <span>Followed</span>
                             <img src={DropdownArrow} alt="Dropdown" />
                         </FollowedButton>
                     </RightWrapper>
@@ -175,18 +181,20 @@ export class ResumeYourWork extends Component {
                             )
                     }
                 </List>
-                <ReactPaginate
-                previousLabel="Previous"
-                nextLabel="Next"
-                breakLabel="..."
-                breakClassName="break-me"
-                pageCount={Math.ceil(filteredComments.length/10)}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={2}
-                onPageChange={changePage}
-                containerClassName="pagination"
-                activeClassName="active"
-                />
+                {filteredComments.length>10 &&
+                    <ReactPaginate
+                    previousLabel="Previous"
+                    nextLabel="Next"
+                    breakLabel="..."
+                    breakClassName="break-me"
+                    pageCount={Math.ceil(filteredComments.length/10)}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={2}
+                    onPageChange={changePage}
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    />
+                }
             </Wrapper>
         )
     }

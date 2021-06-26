@@ -6,8 +6,8 @@ import {Colors} from 'styledHelpers/Colors'
 import work from 'assets/work.jpg'
 
 const Wrapper = styled.li`
-display: flex;
-gap: 1em;
+    display: flex;
+    gap: 1em;
 `;
 
 const Title = styled.h3`

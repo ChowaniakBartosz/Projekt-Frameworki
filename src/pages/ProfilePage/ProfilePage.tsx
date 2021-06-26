@@ -4,102 +4,60 @@ import HeaderButton from './HeaderButton'
 import ProfileView from './ProfileView'
 import {Colors} from 'styledHelpers/Colors'
 
-// import icons
-import messageIcon from 'assets/icons/house.svg'
-import commentsIcon from 'assets/icons/comments.svg'
-import editIcon from 'assets/icons/plus.svg'
+import { SectionTitle } from 'styledHelpers/Components';
 
+
+// import icons
+import tmpIcon from 'assets/icons/comments.svg'
+import pencilIcon from 'assets/icons/pencil.svg'
+import fileIcon from 'assets/icons/file.svg'
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    flex-basis: 100%;
+    
     background-color: ${Colors.White};
     padding: 1em;
     box-shadow: 0px 3px 3px ${Colors.Silver};
     border-radius: 6px;
 `;
 
-const Header = styled.section`
-    align-self: flex-start;
-    border-bottom: #ccc solid 1px;
-    width: 97%;
-    padding: 0 1em 2em 1em;
-    position: relative;
-`;
-
-const HeaderTopBar = styled.div`
-    text-align: right;
+const TopButtons = styled.div`
     display: flex;
     justify-content: flex-end;
-`;
+    gap: 1em;
 
-const Container = styled.div`
-    width: 100%;
-    align-self: flex-end;
-    display: flex;
-    position: relative;
-`;
-
-const ProfileRow = styled.div`
-    justify-self: flex-start;
-    align-self: center;
-    padding: 0 2em;
-`;
-
-const Row = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-`;
-
-const RightRow = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-`;
-
-const ExpandRow = styled.div`
-    justify-self: flex-start;
-    /* align-self: center; */
-    flex-grow: 2;
-    color: #232c47;
-    display: flex;
-    h3 {
-        font-size: 1.2em;
-        font-weight: bolder;
-        line-height: 1.2;
+    & > span {
+        display: flex;
+        gap: 1em;
+        align-items: center;
     }
-    p {
-        margin-top: 0.6em;
-        font-size: 1em;
-        line-height: 1.4;
+
+    & button {
+        background: none;
+        border: none;
     }
 `;
 
-const EditButton = styled.button`
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: .5em;
-    border: 0;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
+const ProfileSection = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover { background-color: #ccc; }
-`;
-
-const Section = styled.section`
+    align-items: flex-end;
     border-bottom: #ccc solid 1px;
     padding: 2em 1em;
     position: relative;
-    width: 100%;
+    gap: 2em;
 `;
 
-const SectionTitle = styled.h3`
+const TagSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    position: relative;
+`;
+
+const GrayTitle = styled.h3`
     font-size: 1.2em;
     color: #a5a8b4;
 `;
@@ -115,74 +73,337 @@ const Tag = styled.span`
     background-color: #e6f0f3;
     padding: .4em;
     margin: 0 .4em;
-    border-radius: 3px 6px;
-    &:first-child { margin-left: 0; }
+    border-radius: 5px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+`;
+
+const EditableText = styled.input`
+    background: none;
+    border: none;
+    font-size: 1em;
+`;
+
+const Name = styled(EditableText)`
+    font-weight: bold;
+`;
+const CorporationName = styled(EditableText)`
+    font-weight: bold;
+
+`;
+const City = styled(EditableText)`
+
+`;
+const JobTitle = styled(EditableText)`
+
+`;
+const UserMail = styled(EditableText)`
+
+`;
+const UserPhone = styled(EditableText)`
+
+`;
+
+const EditButton = styled.button`
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 1em;
+    right: 0;
+    background: none;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const UserInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5em;
+`;
+
+const UserContact = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5em;
+`;
+
+const EditableSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & > div {
+        display: flex;
+        border-bottom: #ccc solid 1px;
+        padding: 1em 0;
+    }
+`;
+
+const PanelInformations = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`;
+const Proposals = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`;
+
+const Columns = styled.div`
+    display: flex;
+`;
+
+const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5em;
+
+    b {
+        font-weight: bold;
+        border-bottom: 1px solid silver;
+        padding-bottom: 0.5em;
+    }
+`;
+
+const InternalReviews = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`;
+const AmountOfFees = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`;
+
+const GrayBg = styled.div`
+    padding: 1em;
+    background: #e5e5e5;
+    border-radius: 5px;
 `;
 
 class Profile extends Component {
     render() {
         return (
             <Wrapper>
-                <Header>
-                    <HeaderTopBar>
-                        <HeaderButton to="/comments" icon={commentsIcon}>Message</HeaderButton>
-                        <HeaderButton to="#" icon={editIcon}>Create a request</HeaderButton>
-                        <HeaderButton to="#" icon={editIcon}>Add to a cluster</HeaderButton>
-                    </HeaderTopBar>
+                <TopButtons>
+                    <span>
+                        <button>
+                            <img src={tmpIcon} alt="tmp icon" />
+                        </button>
+                        Message
+                    </span>
+                    <span>
+                        <button>
+                            <img src={tmpIcon} alt="tmp icon" />
+                        </button>
+                        Create a request
+                    </span>
+                    <span>
+                        <button>
+                            <img src={tmpIcon} alt="tmp icon" />
+                        </button>
+                        Add to a cluster
+                    </span>
+                    <button>
+                        <img src={tmpIcon} alt="tmp icon" />
+                    </button>
+                </TopButtons>
+                <ProfileSection>
+                    <ProfileView />
+                    <UserInfo>
+                        <Name disabled value="Humberta swift" />
+                        <CorporationName disabled value="Clifford Chance" />
+                        <City disabled value="New-york" />
+                        <JobTitle disabled value="Partner" />
+                    </UserInfo>
+                    <UserContact>
+                        <UserMail disabled value="humbertaswift@gmail.com" />
+                        <UserPhone disabled value="+33 (0)6 12 34 56 78" />
+                    </UserContact>
+                    <EditButton>
+                        <img src={pencilIcon} alt="temporary icon" />
+                    </EditButton>
+                </ProfileSection>
 
-                    <Container>
-                        
-                        <ProfileRow>
-                            <ProfileView />
-                        </ProfileRow>
+                <EditableSection>
+                    <TagSection>
+                        <GrayTitle>Expertise</GrayTitle>
+                        <Tags>
+                            <Tag>Mergers and acquisition</Tag>
+                        </Tags>
 
-                        <ExpandRow>
-                            <Row>
-                                <h3>
-                                    Humberta swift<br />
-                                    Clifford Chance
-                                </h3>
+                        <GrayTitle>Specialties</GrayTitle>
+                        <Tags>
+                            <Tag>Cross border operation</Tag>
+                            <Tag>Transaction over 500M/$</Tag>
+                        </Tags>
 
-                                <p>
-                                    New-york<br />
-                                    Partner
-                                </p>
-                            </Row>
-                            <RightRow>
-                                <p>
-                                humbertaswift@gmail.com<br />
-                                +33 (0)6 12 34 56 78
-                                </p>
-                            </RightRow>
-                        </ExpandRow>
-                    </Container>
-                </Header>
+                        <GrayTitle>Admission to practice law</GrayTitle>
+                        <Tags>
+                            <Tag>Paris bar association</Tag>
+                            <Tag>Tunisian bar association</Tag>
+                        </Tags>
 
-                <Section>
-                    
+                        <GrayTitle>Counties</GrayTitle>
+                        <Tags>
+                            <Tag>Tunisia</Tag>
+                        </Tags>
 
-                    <SectionTitle>Expertise</SectionTitle>
-                    <Tags>
-                        <Tag>Mergers and acquisition</Tag>
-                    </Tags>
+                        <EditButton>
+                            <img src={pencilIcon} alt="temporary icon" />
+                        </EditButton>
+                    </TagSection>
+                    <PanelInformations>
+                        <SectionTitle>Panel Informations</SectionTitle>
 
-                    <SectionTitle>Specialties</SectionTitle>
-                    <Tags>
-                        <Tag>Cross border operation</Tag>
-                        <Tag>Transaction over 500M/$</Tag>
-                    </Tags>
+                        <GrayTitle>Hourly fee</GrayTitle>
+                        <span>610€/hour (Negociated)</span>
 
-                    <SectionTitle>Admission to practice law</SectionTitle>
-                    <Tags>
-                        <Tag>Paris bar association</Tag>
-                        <Tag>Tunisian bar association</Tag>
-                    </Tags>
+                        <GrayTitle>Terms & conditions</GrayTitle>
+                        <span>Monthly 10k$ retainer - see with Jeanny Smith</span>
+                        {/* Attachment */}
+                        <GrayBg>
+                            <img src={fileIcon} alt="file icon" height="15"/>
+                            Attachment.jpg
+                        </GrayBg>
 
-                    <SectionTitle>Counties</SectionTitle>
-                    <Tags>
-                        <Tag>Tunisia</Tag>
-                    </Tags>
-                </Section>
+                        <SectionTitle>Services & projects</SectionTitle>
+                        <span>Corporate M&A and international acquisitions</span>
+
+                        <SectionTitle>Internal correspondants</SectionTitle>
+                        <GrayBg>item1 message profile</GrayBg>
+                        <GrayBg>item2 message profile</GrayBg>
+
+                    </PanelInformations>
+                    <Proposals>
+                        <SectionTitle>Proposals</SectionTitle>
+                        <Columns>
+                            <Column>
+                                <b>Name</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Entity</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Location</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Expertise</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Date</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Firm</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                        </Columns>
+                        <a href="#">See more</a>
+                    </Proposals>
+                    <InternalReviews>
+                        <SectionTitle>Internal reviews</SectionTitle>
+                        <Columns>
+                            <Column>
+                                <b>Name</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Entity</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Location</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Expertise</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Date</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                        </Columns>
+                        <a href="#">See more</a>
+                    </InternalReviews>
+                    <AmountOfFees>
+                        <SectionTitle>Amount of fees</SectionTitle>
+                        <Columns>
+                            <Column>
+                                <b>Year</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Cost center</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Total amount</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                            <Column>
+                                <b>Law firm</b>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                                <span>Lorem Ipsum</span>
+                            </Column>
+                        </Columns>
+                    </AmountOfFees>
+                </EditableSection>
             </Wrapper>
         )
     }

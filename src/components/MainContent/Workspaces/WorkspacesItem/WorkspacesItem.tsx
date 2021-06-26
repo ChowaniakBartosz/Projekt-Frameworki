@@ -66,7 +66,8 @@ const LastUpdate = styled.span`
 export interface IWorkspacesItem {
     lastUpdate : string,
     title : string,
-    icon : string
+    icon : string,
+    background?: string,
 }
 
 export const WorkspacesItem: FC<IWorkspacesItem> = ({title, icon, lastUpdate}) => {
