@@ -16,6 +16,7 @@ import HomePage from 'pages/HomePage/HomePage';
 import ProfilePage from 'pages/ProfilePage/ProfilePage';
 import PublicationsPage from 'pages/PublicationsPage/PublicationsPage';
 import MockPage from 'pages/MockPage/MockPage';
+import EntitiesPage from 'pages/EntitiesPage/EntitiesPage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,16 +68,31 @@ const App: FC = () => {
                   <MockPage />
                 </Route>
                 <Route exact path="/entities">
-                  <MockPage />
+                  <EntitiesPage />
                 </Route>
                 <Route exact path="/people">
+                  <MockPage />
+                </Route>
+                <Route exact path="/privacy">
+                  <MockPage />
+                </Route>
+                <Route exact path="/logout">
+                  <MockPage />
+                </Route>
+                <Route exact path="/network">
+                  <MockPage />
+                </Route>
+                <Route exact path="/comments">
+                  <MockPage />
+                </Route>
+                <Route exact path="/notifications">
                   <MockPage />
                 </Route>
                 <Route exact path="/ecosystem">
                   <MockPage />
                 </Route>
                 <Route exact path="/publications">
-                  <PublicationsPage />
+                  <MockPage />
                 </Route>
                 <Route exact path="/">
                   <HomePage />

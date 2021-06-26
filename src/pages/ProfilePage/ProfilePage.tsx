@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import HeaderButton from './HeaderButton'
 import ProfileView from './ProfileView'
 import {Colors} from 'styledHelpers/Colors'
 
@@ -22,6 +21,11 @@ const Wrapper = styled.div`
     padding: 1em;
     box-shadow: 0px 3px 3px ${Colors.Silver};
     border-radius: 6px;
+
+    & a {
+        text-decoration: none;
+        font-size: 1.2em;
+    }
 `;
 
 const TopButtons = styled.div`
@@ -327,7 +331,7 @@ class Profile extends Component {
                                 <span>Lorem Ipsum</span>
                             </Column>
                         </Columns>
-                        <a href="#">See more</a>
+                        <a href="#">See more proposals</a>
                     </Proposals>
                     <InternalReviews>
                         <SectionTitle>Internal reviews</SectionTitle>
@@ -368,7 +372,7 @@ class Profile extends Component {
                                 <span>Lorem Ipsum</span>
                             </Column>
                         </Columns>
-                        <a href="#">See more</a>
+                        <a href="#">See more reviews</a>
                     </InternalReviews>
                     <AmountOfFees>
                         <SectionTitle>Amount of fees</SectionTitle>
