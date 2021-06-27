@@ -35,7 +35,21 @@ const ViewSwitcher = styled.div`
     display: flex;
     margin-left: auto;
     border: 1px solid gray;
-    padding: 0.2em 0.5em;
+    border-radius: 5px;
+
+    & ul {
+        display: flex;
+
+        & li {
+            padding: 0.2em 0.5em;
+        }
+    }
+
+    & li:first-child {
+        flex-shrink: 1;
+        border-right: 1px solid gray;
+        font-weight: bold;
+    }
 `;
 
 const ButtonBar = styled.div`
@@ -45,6 +59,19 @@ const ButtonBar = styled.div`
 
     & input {
         margin-left: auto;
+        padding: 0.4em 0.5em;
+        border-radius: 5px;
+        border: 1px solid silver;
+    }
+
+    & img {
+        margin-right: 0.5em;
+    }
+
+    & li.followedBtn {
+        border: 1px solid silver;
+        padding: 0.4em 0.5em;
+        border-radius: 5px;
     }
 `;
 
@@ -92,7 +119,12 @@ const Entities: FC = () => {
                         Entities
                     </SectionTitle>
                     <img src={editIcon} alt="edit icon" height="15" />
-                    <ViewSwitcher>Mosaic | List</ViewSwitcher>
+                    <ViewSwitcher>
+                        <ul>
+                            <li>Mosaic</li>
+                            <li>List</li>
+                        </ul>
+                    </ViewSwitcher>
                 </TopBar>
                 <ButtonBar>
                     <ul>
@@ -117,7 +149,7 @@ const Entities: FC = () => {
                     </span>
                     <input placeholder="Search" />
                     <ul>
-                        <li>Followed</li>
+                        <li className="followedBtn">Followed</li>
                         {/* <li>All</li> */}
                     </ul>
                 </ButtonBar>

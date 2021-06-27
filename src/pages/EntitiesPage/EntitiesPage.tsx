@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import { Colors } from 'styledHelpers/Colors';
 
 import Entities from 'components/MainContent/Entities/Entities'
 

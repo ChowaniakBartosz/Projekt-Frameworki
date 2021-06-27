@@ -6,6 +6,7 @@ import EntityImage from 'assets/office.jpg';
 
 const Wrapper = styled.div`
     display: flex;
+    box-sizing: border-box;
     width: 24.5%;
     height: 100px;
     border-radius: 6px;

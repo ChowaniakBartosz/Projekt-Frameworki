@@ -4,6 +4,7 @@ import {Colors} from 'styledHelpers/Colors'
 
 import ContractImage from 'assets/contract.jpg'
 import Icon from 'assets/icons/ecosystem.svg';
+import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -37,7 +38,6 @@ const Content = styled.div`
 const CardIconContainer = styled.div`
     display: flex;
     z-index: 2;
-    padding: 1em;
     background-color: ${Colors.White};
     box-shadow: 0px 3px 3px ${Colors.Silver};
     border-radius: 3px;
@@ -45,16 +45,20 @@ const CardIconContainer = styled.div`
     top: -1.5em;
     width: 3em;
     height: 3em;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
 `;
 
 const CardIcon = styled.img`
     opacity: 0.3;
 `;
 
-const Title = styled.h2`
+const Title = styled(Link)`
     color: ${Colors.PrimaryText};
     font-size: 1.2em;
     margin-left: 4.6em;
+    text-decoration: none;
 `;
 
 const LastUpdate = styled.span`
@@ -76,9 +80,9 @@ export const WorkspacesItem: FC<IWorkspacesItem> = ({title, icon, lastUpdate}) =
             <Image />
             <Content>
                 <CardIconContainer>
-                    <CardIcon src={icon} alt="icon" />
+                    <CardIcon src={icon} alt="icon" height="50" />
                 </CardIconContainer>
-                <Title>{title}</Title>
+                <Title to="/workspace">{title}</Title>
             </Content>
             <LastUpdate>Last update {lastUpdate} days ago</LastUpdate>
         </Wrapper>
